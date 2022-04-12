@@ -1,0 +1,9 @@
+¿Durante cuánto tiempo hizo\n 
+deporte?\n 
+\n 
+
+(1) Durante unos minutos \n 
+(2) Durante una hora \n 
+(3) Durante toda la tarde \n 
+(4) Durante cien horas \n 
+(5) No recuerdo \n 

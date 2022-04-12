@@ -1,0 +1,7 @@
+¿Dónde estaba el nombre el payaso?\n
+\n
+(1) En el pavimento \n
+(2) En la pared \n
+(3) En un papel \n
+(4) En un perro \n
+(5) No recuerdo \n

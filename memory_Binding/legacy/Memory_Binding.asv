@@ -1,0 +1,191 @@
+function Memory_Binding(subID)
+
+clc
+clear all
+
+%%%%%%%%%% Memory Binding Paradigma
+%%%%%%%%%% Psychtoolbox - Ineco - 2019
+
+% Defino el path desde      donde se llamo al script
+Path_To_Files = mfilename('fullpath');
+
+% Consigo el largo del nombre del script
+Length_Script_Name = length(mfilename);
+
+% Resto el nombre del script al path y lo guardo como path a usar
+ScriptPath = Path_To_Files(1:end-Length_Script_Name);
+
+% Agrego path para las funciones
+addpath(genpath(ScriptPath));
+
+% Me paro en el path del script
+cd(ScriptPath)
+
+% Keyboard setup
+KbName('UnifyKeyNames');
+
+% Setup de la pantalla
+clear screen
+
+% Color de Fondo
+backgroundColor=192;
+
+% Cantidad de pantallas
+Screen('Preference', 'SkipSyncTests', 1);
+whichScreen = max(Screen('Screens'));
+
+% Defino tamaño de la pantalla
+[window1, rect] = Screen('Openwindow',whichScreen,backgroundColor,[0 0 1920 1080],[],2); % 640*480 a modificar
+
+% Creo la interfaz con la data que necesito del sujeto
+[SUB] = choosedialog();
+
+% Guardo en orden variables del sujeto
+SUBJECT_INFO{1,2} = SUB{1,1};
+SUBJECT_INFO{2,2} = SUB{2,1};
+SUBJECT_INFO{3,2} = SUB(3,1);
+SUBJECT_INFO{4,2} = SUB{4,1};
+SUBJECT_INFO{5,2} = SUB(5,1);
+SUBJECT_INFO{6,2} = SUB(6,1);
+SUBJECT_INFO{7,2} = [SUB{7},'/',SUB{8},'/',SUB{9}];
+SUBJECT_INFO{8,2} = SUB{10,1};
+SUBJECT_INFO{9,2} = SUB(11,1);
+
+% Creo los indices
+SUBJECT_INFO{1,1} = 'ID';
+SUBJECT_INFO{2,1} = 'Group';
+SUBJECT_INFO{3,1} = 'Education';
+SUBJECT_INFO{4,1} = 'Age';
+SUBJECT_INFO{5,1} = 'Sex';
+SUBJECT_INFO{6,1} = 'Laterality';
+SUBJECT_INFO{7,1} = 'Date';
+SUBJECT_INFO{8,1} = 'StimuliAmount';
+SUBJECT_INFO{9,1} = 'StartedFrom';
+
+% Defino variables a guardar con la data de los sujetos recien puesta
+SubID=SUBJECT_INFO{1,2};
+AmountOfStimuli=SUBJECT_INFO{8,2};
+ExperimentStart = SUBJECT_INFO{9,2};
+
+% De donde empezar la tarea
+if isequal(ExperimentStart{1,1},'Perception')
+    StartFrom = 0;
+elseif isequal(ExperimentStart{1,1},'ShapeOnly')
+    StartFrom = 1;
+else
+    StartFrom = 2;
+end
+
+
+
+% Cantidad de tiempo que tarda en flipear la pantalla (se resta a
+% presentacion de estimulo para no generar lag)
+Slack = Screen('GetFlipInterval', window1)/2;
+
+% Cuanto tarda en hacer el winflip
+ifi = Screen('GetFlipInterval', window1);
+
+% Defino el ancho y largo de la pantalla (sirve para definis posiciones de
+% destimulos)
+W=rect(RectRight); % screen width
+H=rect(RectBottom); % screen height
+Image_Dummy1 = uint8(zeros(W,H,3));
+Image_Dummy1(Image_Dummy1 == 0) = 192;
+ 
+% Llena los pixeles de la pantalla con el color que se designo
+Screen(window1,'FillRect',backgroundColor);
+
+% Dibujo lo hecho anteriormente
+Screen('Flip', window1);
+
+% Defino estimulos con posiciones
+imageFolder = 'Estimulos';
+TaskShapesOnly = 'ShapesOnly';
+PerceptionShapes = 'ShapesColor';
+
+% Defino el path de  las tareas (2/3/4)
+Path_Tasks = [ScriptPath, imageFolder];
+
+% Defino cuantos estimulos a usar
+if isequal(AmountOfStimuli, '2'), StimuliFolder = 'Dos';
+elseif isequal(AmountOfStimuli, '3'), StimuliFolder = 'Tres';
+elseif isequal(AmountOfStimuli, '4'), StimuliFolder = 'Cuatro';
+end
+
+% Defino el path de los estimulos (percepcion y tarea
+Path_ShapeOnly_Stimuli = [Path_Tasks,'/', StimuliFolder, '/', TaskShapesOnly];
+Path_Perception_Stimuli =  [Path_Tasks, '/', StimuliFolder, '/', PerceptionShapes];
+Path_Black_Bar = [Path_Tasks,'/'];
+
+% Cargo los directorios con las imagenes
+TaskShapeOnlyStimuliDir = dir(Path_ShapeOnly_Stimuli);
+PerceptionStimuliDir = dir(Path_Perception_Stimuli);
+
+% Creo mi tabla con estimulos y posiciones en la pantalla (definidos en el
+% E-Prime) y le hago un shuffle a los estimulos
+Memory_Binding_Stimuli_Position;
+
+% Creo la permutacion de Percepcion y de la tarea
+Permutation_Perception = randperm(size(Stimuli_Perception_Database,2));
+Permutation_Perception(Permutation_Perception == 1 | Permutation_Perception == 2) = [];
+
+Permutation_TaskShapeOnly = randperm(size(Stimuli_Task_ShapeOnly_Database,2));
+Permutation_TaskShapeOnly(Permutation_TaskShapeOnly == 1 | Permutation_TaskShapeOnly == 2) = [];
+
+Permutation_TaskShapeColor = randperm(size(Stimuli_Task_ShapeOnly_Database,2));
+Permutation_TaskShapeColor(Permutation_TaskShapeColor == 1 | Permutation_TaskShapeColor == 2) = [];
+
+% Permuto los trials (Aleatorizo la presentacion de cada trial)
+Stimuli_Task_ShapeOnly_Database = Stimuli_Task_ShapeOnly_Database(:,[1,2,Permutation_TaskShapeOnly]);
+Stimuli_Task_ShapeColor_Database = Stimuli_Task_ShapeColor_Database(:,[1,2,Permutation_TaskShapeColor]);
+Stimuli_Perception_Database = Stimuli_Perception_Database(:,[1,2,Permutation_Perception]);
+
+% Guardo orden de los estimulos
+Order=[cd '/Results/StimuliOrder/' (SubID) '_StimOrder'];
+SubjData=[cd '/Results/SubjData/' (SubID) '_SubjData'];
+SujAnswers=[cd '/Results/SubjAnswers/' 'Subject_',SUBJECT_INFO{1,2},'_Answers.mat'];
+save(Order, 'Stimuli_Perception_Database');
+save(SubjData, 'SUB');
+
+% Creo txt para los outputs (fopen 'a' crea un archivo o apendea
+ResultsFolder = 'Results';
+
+% Textos de las tareas
+[Textos_Percepcion, Textos_Tarea] = Textos_Tareas;
+
+% Matriz de respuestas
+Trial_Order_Perception = Stimuli_Perception_Database(1,3:end)';
+Trial_Order_TaskShapeOnly = Stimuli_Task_ShapeOnly_Database(1,3:end)';
+Trial_Order_TaskShapeColor = Stimuli_Task_ShapeColor_Database(1,3:end)';
+
+% Guardado de respuestas por Trial de percepcion
+Answers_Perception(2:length(Trial_Order_Perception)+1,1) = Trial_Order_Perception(:,1);
+Answers_Perception{1,1} = 'Trials';
+Answers_Perception{1,2} = 'Diferentes';
+Answers_Perception{1,3} = 'Iguales';
+Answers_Perception{1,4} = 'Reaction_Time';
+Answers_Perception{1,5} = 'Accuracy';
+
+% Guardado de respuestas por Trial de Tarea blanco y negro
+Answers_Task_ShapeOnly = Answers_Perception;
+Answers_Task_ShapeColor = Answers_Perception;
+Answers_Task_ShapeOnly(2:length(Trial_Order_TaskShapeOnly)+1,1) = Trial_Order_TaskShapeOnly(:,1);
+Answers_Task_ShapeColor(2:length(Trial_Order_TaskShapeColor)+1,1) = Trial_Order_TaskShapeColor(:,1);
+
+% Estructura con respuestas
+Subject_Answers = struct;
+
+if StartFrom == 0 
+    % Percepcion
+    Perception_Task;
+end 
+if StartFrom == 0 || StartFrom == 1
+    % ShapesOnly
+    ShapesOnly_Task;
+end    
+if StartFrom == 0 || StartFrom == 1 || StartFrom == 2
+    % ShapeColor
+    ShapesColor_Task;
+end
+save(SujAnswers,'Subject_Answers');
+end

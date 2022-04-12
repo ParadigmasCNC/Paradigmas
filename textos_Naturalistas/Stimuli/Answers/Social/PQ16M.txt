@@ -1,0 +1,7 @@
+¿Qué haría Alberto al reencontrarse con Juan?\n
+\n
+(1) Le donaría su casa \n
+(2) Le regalaría una de sus flores \n
+(3) Le daría una sorpresa \n
+(4) Le pagaría mil pesos \n
+(5) No recuerdo \n

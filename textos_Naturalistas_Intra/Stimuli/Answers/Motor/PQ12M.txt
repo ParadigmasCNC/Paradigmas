@@ -1,0 +1,7 @@
+¿Cómo comió el chocolate Juanito?\n
+\n
+(1) De un bocado \n
+(2) Gritando \n
+(3) Lentamente \n
+(4) Mordiendo varias veces \n
+(5) No recuerdo \n

@@ -1,0 +1,7 @@
+¿Dónde tenía los restos de chocolate?\n
+\n
+(1) En el cine \n
+(2) En la boca \n
+(3) En la falda de su madre \n
+(4) En las manos \n
+(5) No recuerdo \n

@@ -1,0 +1,7 @@
+¿Qué hizo Luis cuando abrió los ojos?\n
+\n
+(1) Tiró el reloj \n
+(2) Mordió el reloj \n
+(3) Miró el reloj \n
+(4) Apagó el reloj \n
+(5) No recuerdo \n

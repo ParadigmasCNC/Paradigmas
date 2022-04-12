@@ -1,0 +1,7 @@
+¿Dónde estaban las muchachas que rodeaban a Mario? \n
+\n
+(1) Al lado del baño \n
+(2) Al lado del bar \n
+(3) Al lado del prado \n
+(4) Al lado del escenario \n
+(5) No recuerdo \n

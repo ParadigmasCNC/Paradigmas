@@ -1,0 +1,2672 @@
+'
+'
+'
+'	C:\Documents and Settings\EGI\Desktop\Documents\for_Agustin\for_Agustin\ratings_esp_corto\Postscan_ratings.ebs
+'	Generated on: 4/26/2010	19:55:23
+'
+'
+'	This file generated with E-Studio interface.
+'	E-Prime Copyright © 1996-2005 Psychology Software Tools.
+'	ALL RIGHTS RESERVED
+'
+'	Legal use of this experiment script requires a full E-Prime or Runtime License.
+'
+'
+'	Author:
+'		Cat Norris
+'
+'
+'
+'
+
+Option CStrings On
+Dim ebContext as Context
+
+
+'--------------------------------------------------------------------------
+' Class Declarations
+'--------------------------------------------------------------------------
+
+
+
+'--------------------------------------------------------------------------
+'InitTextDisplayDefaults
+'--------------------------------------------------------------------------
+Sub InitTextDisplayDefaults(theTextDisplay As TextDisplay)
+
+	If theTextDisplay Is Nothing Then Exit Sub
+
+	theTextDisplay.X = "center"
+	theTextDisplay.Y = "center"
+	theTextDisplay.Width = "100%"
+	theTextDisplay.Height = "100%"
+	theTextDisplay.ForeColor = CColor("black")
+	theTextDisplay.BackColor = CColor("white")
+	theTextDisplay.BackStyle = "opaque"
+	theTextDisplay.BorderColor = CColor("black")
+	theTextDisplay.BorderWidth = CLng("0")
+	theTextDisplay.XAlign = "center"
+	theTextDisplay.YAlign = "center"
+	theTextDisplay.AlignHorizontal = "center"
+	theTextDisplay.AlignVertical = "center"
+	theTextDisplay.WordWrap = True
+	theTextDisplay.ClearAfter = CLogical("No")
+	theTextDisplay.FontName = "Courier New"
+	theTextDisplay.FontSize = "18"
+	theTextDisplay.FontBold = CLogical("Yes")
+	theTextDisplay.FontItalic = CLogical("No")
+	theTextDisplay.FontUnderline = CLogical("No")
+	theTextDisplay.FontStrikeout = CLogical("No")
+
+End Sub
+
+
+
+
+
+
+
+
+
+'--------------------------------------------------------------------------
+'InitSlideStateDefaults
+'--------------------------------------------------------------------------
+Sub InitSlideStateDefaults(theSlideState As SlideState)
+
+	If theSlideState Is Nothing Then Exit Sub
+
+	theSlideState.X = "center"
+	theSlideState.Y = "center"
+	theSlideState.Width = "100%"
+	theSlideState.Height = "100%"
+	theSlideState.BackColor = CColor("white")
+	theSlideState.BackStyle = "opaque"
+	theSlideState.BorderColor = CColor("black")
+	theSlideState.BorderWidth = CLng("0")
+	theSlideState.XAlign = "center"
+	theSlideState.YAlign = "center"
+	theSlideState.ClearAfter = CLogical("No")
+	theSlideState.Enabled = CLogical("Yes")
+
+End Sub
+
+'--------------------------------------------------------------------------
+'InitSlideVisualStimDefaults
+'--------------------------------------------------------------------------
+Sub InitSlideVisualStimDefaults(theSlideVisualStim As SlideVisualStim)
+
+	If theSlideVisualStim Is Nothing Then Exit Sub
+
+	theSlideVisualStim.X = "center"
+	theSlideVisualStim.Y = "center"
+	theSlideVisualStim.Width = "25%"
+	theSlideVisualStim.Height = "25%"
+	theSlideVisualStim.ForeColor = CColor("black")
+	theSlideVisualStim.BackColor = CColor("white")
+	theSlideVisualStim.BackStyle = "opaque"
+	theSlideVisualStim.BorderColor = CColor("black")
+	theSlideVisualStim.BorderWidth = CLng("0")
+	theSlideVisualStim.XAlign = "center"
+	theSlideVisualStim.YAlign = "center"
+	theSlideVisualStim.AlignHorizontal = "center"
+	theSlideVisualStim.AlignVertical = "center"
+
+End Sub
+
+'--------------------------------------------------------------------------
+'InitSlideTextDefaults
+'--------------------------------------------------------------------------
+Sub InitSlideTextDefaults(theSlideText As SlideText)
+
+	If theSlideText Is Nothing Then Exit Sub
+
+	InitSlideVisualStimDefaults theSlideText
+
+	theSlideText.WordWrap = True
+	theSlideText.FontName = "Courier New"
+	theSlideText.FontSize = "18"
+	theSlideText.FontBold = CLogical("Yes")
+	theSlideText.FontItalic = CLogical("No")
+	theSlideText.FontUnderline = CLogical("No")
+	theSlideText.FontStrikeout = CLogical("No")
+
+End Sub
+
+'--------------------------------------------------------------------------
+'InitSlideImageDefaults
+'--------------------------------------------------------------------------
+Sub InitSlideImageDefaults(theSlideImage As SlideImage)
+
+	If theSlideImage Is Nothing Then Exit Sub
+
+	InitSlideVisualStimDefaults theSlideImage
+
+	theSlideImage.Stretch = CLogical("No")
+	theSlideImage.MirrorLeftRight = CLogical("No")
+	theSlideImage.MirrorUpDown = CLogical("No")
+	theSlideImage.UseSourceColorKey = CLogical("No")
+	theSlideImage.SourceColorKey = CColor("black")
+
+End Sub
+
+'--------------------------------------------------------------------------
+'InitSlideSoundBufferDefaults
+'--------------------------------------------------------------------------
+Sub InitSlideSoundBufferDefaults(theSoundBuffer As SoundBuffer)
+
+	If theSoundBuffer Is Nothing Then Exit Sub
+
+	theSoundBuffer.Loop = CLogical("No")
+	theSoundBuffer.StopAfter = CLogical("Yes")
+	theSoundBuffer.StartOffset = "0"
+	theSoundBuffer.StopOffset = "0"
+
+End Sub
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+'--------------------------------------------------------------------------
+' Instance Declarations
+'--------------------------------------------------------------------------
+Dim Display As DisplayDevice
+Dim Sound As SoundDevice
+Dim Keyboard As KeyboardDevice
+Dim Mouse As MouseDevice
+Dim Serial As SerialDevice
+Dim Port2 As PortDevice
+Dim SessionProc As Procedure
+
+Dim TheEnd As TextDisplay
+Dim TheEndEchoClients As EchoClientCollection
+
+Dim BlkScrn As TextDisplay
+
+Dim Obj As List
+
+Dim TrialProc As Procedure
+
+Dim BlockList As List
+
+Dim BlockProc As Procedure
+
+Dim oldIntro3 As TextDisplay
+Dim oldIntro3EchoClients As EchoClientCollection
+
+Dim KeyboardResponse As TextDisplay
+Dim KeyboardResponseEchoClients As EchoClientCollection
+
+Dim oldScale As TextDisplay
+
+Dim Slide1 As Slide
+Dim Slide1_State As SlideState
+Dim Slide1_SlideImage As SlideImage
+
+Dim Slide2 As Slide
+Dim Slide2_State As SlideState
+Dim Slide2_SlideImage As SlideImage
+
+Dim Slide3 As Slide
+Dim Slide3_State As SlideState
+Dim Slide3_SlideText As SlideText
+Dim Slide3_SlideImage As SlideImage
+
+Dim fixation As TextDisplay
+
+Dim confirmation As TextDisplay
+Dim confirmationEchoClients As EchoClientCollection
+
+Dim Intro1 As TextDisplay
+Dim Intro1EchoClients As EchoClientCollection
+
+Dim Intro4 As TextDisplay
+Dim Intro4EchoClients As EchoClientCollection
+
+Dim Scale As Slide
+Dim Scale_State As SlideState
+Dim Scale_SlideText As SlideText
+Dim Scale_SlideImage As SlideImage
+
+Dim Intro2 As TextDisplay
+Dim Intro2EchoClients As EchoClientCollection
+
+Dim Intro3 As Slide
+Dim Intro3_State As SlideState
+Dim Intro3_SlideText As SlideText
+
+Dim Slide4 As Slide
+Dim Slide4_State As SlideState
+
+Dim Question1 As Slide
+Dim Question1EchoClients As EchoClientCollection
+Dim Question1_State As SlideState
+Dim Question1_SlideText As SlideText
+Dim Question1_SlideImage As SlideImage
+
+Dim Slide5 As Slide
+Dim Slide5_State As SlideState
+
+Dim listforpers As List
+
+Dim Scaleproc As Procedure
+
+Dim Slide6 As Slide
+Dim Slide6_State As SlideState
+Dim Slide6_SlideImage As SlideImage
+
+Dim Slide7 As Slide
+Dim Slide7_State As SlideState
+Dim Slide7_SlideImage As SlideImage
+
+Dim Slide8 As Slide
+Dim Slide8_State As SlideState
+Dim Slide8_SlideImage As SlideImage
+
+Dim Slide9 As Slide
+Dim Slide9_State As SlideState
+Dim Slide9_SlideText As SlideText
+
+Dim Pers As List
+
+Dim Obj2 As List
+
+Dim TrialProc2 As Procedure
+
+Dim listofrobj2 As List
+
+Dim Combi As List
+
+Dim Wait1 As Wait
+Dim Wait1EchoClients As EchoClientCollection
+
+Dim Slide10 As Slide
+Dim Slide10_State As SlideState
+
+Dim CombiPractice As List
+
+Dim Question2 As Slide
+Dim Question2EchoClients As EchoClientCollection
+Dim Question2_State As SlideState
+Dim Question2_SlideText As SlideText
+Dim Question2_SlideImage As SlideImage
+
+Dim FinalQuestion As Slide
+Dim FinalQuestionEchoClients As EchoClientCollection
+Dim FinalQuestion_State As SlideState
+Dim FinalQuestion_SlideText As SlideText
+Dim FinalQuestion_SlideImage As SlideImage
+
+Dim Intro5 As TextDisplay
+Dim Intro5EchoClients As EchoClientCollection
+
+Dim IntroPractice As TextDisplay
+Dim IntroPracticeEchoClients As EchoClientCollection
+
+Dim Intro6 As TextDisplay
+Dim Intro6EchoClients As EchoClientCollection
+
+
+
+'--------------------------------------------------------------------------
+' Package Declare Script
+'--------------------------------------------------------------------------
+
+
+
+'--------------------------------------------------------------------------
+' User Script
+'--------------------------------------------------------------------------
+'Dim statements
+
+	Dim cnvs As Canvas
+	Dim Form as string
+	Dim Edge, nCellsX, nCellsY as Integer
+	Dim LeftX, RightX, TopY, BottomY as integer
+	dim MinX, MaxX, MinY, MaxY as integer
+	Dim X,Y as Integer
+	Dim CellX, CellY as integer
+	Dim ptMouse as Point
+	Dim LnX, LnY, LnLength, XPos as integer
+	Dim cbX, cbY, cbLength as integer
+
+	Dim PN as Integer
+
+	Dim age, sex as integer
+	Dim Pos, Neg, Va, FaceRating as Integer
+    Dim Tag as String
+	Dim Finish as Boolean
+
+	dim ButtonPress,response as String
+	dim scaleStartTime,scaleDuration,FirstResponseTime as Long '''''''''''''''''
+
+	'dim Keyboard as String
+	'dim scaleStartTime,scaleDuration as Long
+
+	dim scaleCenter,scaleLeft,scaleRight,scaleInc,result,rating,clickX as Integer
+	dim done as boolean
+    Dim Flag as Integer  ''''''''''''''
+	
+Sub ClearScreen
+	Set cnvs = Display.Canvas
+	cnvs.FillColor = CColor ("Black")
+	cnvs.Clear
+End Sub
+
+Sub DefaultTextProp
+	cnvs.TextColor = CColor("White")
+	cnvs.TextBackColor = CColor ("black")
+	cnvs.FontName = "Arial Narrow"
+	cnvs.FontSize = "25"
+	cnvs.FontBold = True
+	cnvs.PenColor = CColor("white")
+	cnvs.PenWidth = 1
+End Sub
+
+Sub ClearForm
+	cnvs.FillColor = CColor ("Black")
+	cnvs.PenColor = CColor ("Black")
+	cnvs.Rectangle 0,0,1024,768
+End Sub
+
+Sub DrawLikeFace
+	'set the marker jump increment
+		scaleInc = 30
+
+	'Draws horizontal scale
+		Let LnX = 262
+		Let LnY = 675
+		Let LnLength = 500
+		Cnvs.PenColor = CColor ("gray")
+		Cnvs.PenWidth = 5
+		cnvs.Line LnX, LnY, LnX+LnLength, LnY
+		Let cbX = 512
+		'Let cbX = 302
+		Let cbY = 650
+		Let cbLength = 50
+		Cnvs.line cbX, cbY, cbX, cbY+cbLength
+
+	'Constrains Cursor
+		Let MinX = LnX
+		Let MaxX = LnX+LnLength
+		Let MinY = LnY
+		Let MaxY = LnY
+
+	'Draws labels
+		cnvs.FontSize = "20"
+		cnvs.TextColor = CColor("White")
+		cnvs.TextBackColor = CColor ("black")
+		'cnvs.Text LnX - 20, LnY + 20, "no"
+		'cnvs.Text LnX, LnY + 50, "pain"
+         'cnvs.Text LnX - 60, LnY - 40, "no"
+         'cnvs.Text LnX - 60, LnY, "pain"
+		'cnvs.Text LnX + LnLength/2 - 35, LnY + 35, "Neutral"
+		'cnvs.Text LnX + LnLength + 20, LnY - 40, "a lot of"
+		'cnvs.Text LnX + LnLength + 20, LnY, "pain"
+
+	'call ButtonBoxResponse
+		'ButtonBoxResponse.InputMasks.Reset
+		'ButtonBoxResponse.InputMasks.Add Keyboard.CreateInputMask("0123{-1}{-3}", "", Val("-1"), Val("1"), ebEndResponseActionNone, True, "", "", "")
+		'ButtonBoxResponse.InputMasks.Add Port2.CreateInputMask("123{-1}{-3}", "", Val("-1"), Val("1"), ebEndResponseActionNone, True, "", "", "")
+		'ButtonBoxResponse.RT = 0
+		'ButtonBoxResponse.RESP = "0"
+		'ScaleStartTime = clock.readmillisec
+
+
+     'call KeyboardResponse
+		KeyBoardResponse.InputMasks.Reset
+		KeyboardResponse.InputMasks.Add Keyboard.CreateInputMask("0123{-1}{-3}{LEFTARROW}{-LEFTARROW}{RIGHTARROW}{-RIGHTARROW}{DOWNARROW}", "", Val("-1"), Val("1"), ebEndResponseActionNone, True, "", "", "")
+		'KeyboardResponse.InputMasks.Add Port2.CreateInputMask("123{-1}{-3}", "", Val("-1"), Val("1"), ebEndResponseActionNone, True, "", "", "")
+		KeyboardResponse.RT = 0
+		KeyboardResponse.RESP = "0"
+        Flag = 0                                                                   '''''''''''''''''''''''''
+		ScaleStartTime = clock.readmillisec
+
+' this part of the code works with keyboard and button box
+		Do 			
+			KeyboardResponse.Run
+			Do 	
+			 	ScaleDuration = clock.readmillisec - ScaleStartTime
+			Loop until KeyboardResponse.RT > 0	'or ScaleDuration > 10000
+			response = KeyboardResponse.RESP
+			KeyboardResponse.Run
+			If response = "{LEFTARROW}" then
+			    if Flag = 0 then                                                    ''''''''''''''''''''''''
+                	FirstResponseTime = clock.readmillisec - ScaleStartTime
+					Flag = 1
+				end if
+'				ButtonBoxResponse.RESP = "0"
+				Do   ' move marker left if it is not already at lefthand limit
+					Cnvs.PenColor = CColor ("black")
+					Cnvs.line cbX, cbY, cbX, cbY+cbLength
+					Cnvs.PenColor = CColor ("gray")
+					Cnvs.Line LnX, LnY, LnX+LnLength, LnY
+					cbX = cbX - scaleInc
+					if cbX < MinX then cbX = MinX
+					Cnvs.PenWidth = 5
+					Cnvs.line cbX, cbY, cbX, cbY+cbLength
+					Cnvs.PenColor = CColor ("gray")
+					Sleep 75
+					ScaleDuration = clock.readmillisec - ScaleStartTime
+				Loop Until KeyboardResponse.RT > 0 or KeyboardResponse.RESP = "{-LEFTARROW}" or KeyboardResponse.RESP = "{RIGHTARROW}" 'or ScaleDuration > 10000
+			ElseIf response = "{RIGHTARROW}" then
+			    if Flag = 0 then                                                 '''''''''''''''''''''
+                	FirstResponseTime = clock.readmillisec - ScaleStartTime
+					Flag = 1
+                end if
+'				ButtonBoxResponse.RESP = "0"
+				Do   ' move marker right if it is not already at righthand limit
+					Cnvs.PenColor = CColor ("black")
+					Cnvs.line cbX, cbY, cbX, cbY+cbLength
+					Cnvs.PenColor = CColor ("gray")
+					Cnvs.Line LnX, LnY, LnX+LnLength, LnY
+					cbX = cbX + scaleInc
+					if cbX > MaxX then cbX = MaxX
+					Cnvs.PenWidth = 5
+					Cnvs.line cbX, cbY, cbX, cbY+cbLength
+					Cnvs.PenColor = CColor ("gray")
+					Sleep 75
+					ScaleDuration = clock.readmillisec - ScaleStartTime
+				Loop Until KeyboardResponse.RT > 0 or KeyboardResponse.RESP = "{-RIGHTARROW}" or KeyboardResponse.RESP = "{LEFTARROW}" 'or ScaleDuration > 10000	
+			End If
+			ScaleDuration = clock.readmillisec - ScaleStartTime
+            Tag = Str((cbX - LnX ) / LnLength * 100)
+            'c.SetAttrib "PainResponse" , Tag
+		Loop until response = "{DOWNARROW}" 'or ScaleDuration > 10000
+            If Flag = 0 then                                                       '''''''''''''''''
+             FirstResponseTime = clock.readmillisec - ScaleStartTime
+	        end if
+End Sub
+
+
+'Tag = Str((NewButtonPosn - slrLeft) / (slrRight - slrLeft) * 100) 
+      'c.SetAttrib "PainResponse" , Tag
+      'CSlideImage(Slide1.States.Item("Default").Objects(1)).X = 300
+      'Slide1.Run
+
+
+'--------------------------------------------------------------------------
+' Package Global Script
+'--------------------------------------------------------------------------
+
+
+
+'--------------------------------------------------------------------------
+' Package Routines
+'--------------------------------------------------------------------------
+
+
+
+'--------------------------------------------------------------------------
+' Implementation
+'--------------------------------------------------------------------------
+Sub SessionProc_Run(c as Context)
+	
+	'''''''''''''''''''''''''''''''''''''''''''''
+	' InLine - SetCanvas BEGIN
+	'''''''''''''''''''''''''''''''''''''''''''''
+		Set cnvs = Display.Canvas
+'	cnvs.FillColor = CColor ("Black")
+
+
+
+
+	'''''''''''''''''''''''''''''''''''''''''''''
+	' InLine - SetCanvas END
+	'''''''''''''''''''''''''''''''''''''''''''''
+	
+	
+	BlkScrn.Run
+	
+	
+	Intro1.InputMasks.Reset
+	
+	If Keyboard.GetState() = ebStateOpen Then
+		Intro1EchoClients.RemoveAll
+		Intro1.InputMasks.Add Keyboard.CreateInputMask("{ANY}", "", CLng(Intro1.Duration), CLng("1"), ebEndResponseActionTerminate, CLogical("Yes"), "", "", "ResponseMode:All ProcessBackspace:Yes")
+
+	
+	End If
+
+	Intro1.Run
+	
+	
+	Intro2.InputMasks.Reset
+	
+	If Keyboard.GetState() = ebStateOpen Then
+		Intro2EchoClients.RemoveAll
+		Intro2.InputMasks.Add Keyboard.CreateInputMask("{ANY}", "", CLng(Intro2.Duration), CLng("1"), ebEndResponseActionTerminate, CLogical("Yes"), "", "", "ResponseMode:All ProcessBackspace:Yes")
+
+	
+	End If
+
+	Intro2.Run
+	
+	
+	Select Case Intro3.ActiveState
+		Case "Default"
+
+
+			Set Intro3_SlideText = CSlideText(Intro3.States.Item("Default").Objects(1))
+			Set Intro3_SlideText = Nothing
+	End Select
+
+	Intro3.Run
+	
+	
+	'''''''''''''''''''''''''''''''''''''''''''''
+	' InLine - Rating BEGIN
+	'''''''''''''''''''''''''''''''''''''''''''''
+	'Matrix Setup
+	Call DefaultTextProp
+	Call DrawLikeFace
+	Call ClearForm
+			
+'Codes response (task-specific)
+	c.SetAttrib "PainRating", CbX
+'	c.SetAttrib "LikeRT", ButtonBoxResponse.RT
+	c.SetAttrib "ScaleDuration", ScaleDuration            
+	c.SetAttrib "ScaleStartTime", ScaleStartTime                 ''''''''''''''
+    c.SetAttrib "FirstResponseTime", FirstResponseTime           ''''''''''''''''
+    c.SetAttrib "VBAscale" , Tag
+
+
+
+
+      'Tag = Str((NewButtonPosn - slrLeft) / (slrRight - slrLeft) * 100) 
+      'c.SetAttrib "PainResponse" , Tag
+      'CSlideImage(Slide1.States.Item("Default").Objects(1)).X = 300
+      'Slide1.Run
+	'''''''''''''''''''''''''''''''''''''''''''''
+	' InLine - Rating END
+	'''''''''''''''''''''''''''''''''''''''''''''
+	
+	
+	
+	Intro4.InputMasks.Reset
+	
+	If Keyboard.GetState() = ebStateOpen Then
+		Intro4EchoClients.RemoveAll
+		Intro4.InputMasks.Add Keyboard.CreateInputMask("{ANY}", "", CLng(Intro4.Duration), CLng("1"), ebEndResponseActionTerminate, CLogical("Yes"), "", "", "ResponseMode:All ProcessBackspace:Yes")
+
+	
+	End If
+
+	Intro4.Run
+	BlockList.Run c
+	
+	
+	TheEnd.InputMasks.Reset
+	
+	If Mouse.GetState() = ebStateOpen Then
+		TheEndEchoClients.RemoveAll
+		TheEnd.InputMasks.Add Mouse.CreateInputMask("12", "", CLng(TheEnd.Duration), CLng("1"), ebEndResponseActionTerminate, CLogical("Yes"), "", "", "")
+
+	
+	End If
+
+	TheEnd.Run
+
+	 
+
+
+#If RUNTIME_VERSION_MAJOR > 1  Or (RUNTIME_VERSION_MAJOR = 1 And RUNTIME_VERSION_MINOR >= 2) Then
+	' Log clock timing information
+	c.SetAttrib "Clock.Information", Clock.Information
+#End If
+
+
+	c.Log
+End Sub
+
+Sub TrialProc_Run(c as Context)
+	
+	fixation.Run
+	
+	
+	Select Case Slide1.ActiveState
+		Case "Default"
+
+
+			Set Slide1_SlideImage = CSlideImage(Slide1.States.Item("Default").Objects(1))
+			Slide1_SlideImage.Filename = c.GetAttrib("FirstPic")
+			Slide1_SlideImage.Load
+			Set Slide1_SlideImage = Nothing
+	End Select
+
+	Slide1.Run
+	
+	
+	
+	Select Case Slide2.ActiveState
+		Case "Default"
+
+
+			Set Slide2_SlideImage = CSlideImage(Slide2.States.Item("Default").Objects(1))
+			Slide2_SlideImage.Filename = c.GetAttrib("SecondPic")
+			Slide2_SlideImage.Load
+			Set Slide2_SlideImage = Nothing
+	End Select
+
+	Slide2.Run
+	
+	
+	
+	Select Case Slide3.ActiveState
+		Case "Default"
+
+
+			Set Slide3_SlideText = CSlideText(Slide3.States.Item("Default").Objects(1))
+			Set Slide3_SlideText = Nothing
+
+			Set Slide3_SlideImage = CSlideImage(Slide3.States.Item("Default").Objects(2))
+			Slide3_SlideImage.Filename = c.GetAttrib("ThirdPic")
+			Slide3_SlideImage.Load
+			Set Slide3_SlideImage = Nothing
+	End Select
+
+	Slide3.Run
+	
+		
+	Wait1.InputMasks.Reset
+	
+	If Keyboard.GetState() = ebStateOpen Then
+		Wait1EchoClients.RemoveAll
+		Wait1.InputMasks.Add Keyboard.CreateInputMask("{DOWNARROW}", "{DOWNARROW}", CLng(Wait1.Duration), CLng("1"), ebEndResponseActionTerminate, CLogical("Yes"), "", "", "ResponseMode:All ProcessBackspace:Yes")
+
+	
+	End If
+
+	Wait1.Run
+	c.SetAttrib Wait1.Name & ".RTTime", Wait1.RTTime
+	c.SetAttrib Wait1.Name & ".ACC", Wait1.ACC
+	c.SetAttrib Wait1.Name & ".RT", Wait1.RT
+	c.SetAttrib Wait1.Name & ".RESP", Wait1.RESP
+	c.SetAttrib Wait1.Name & ".CRESP", Wait1.CRESP
+	
+	
+	
+	Select Case Question1.ActiveState
+		Case "Default"
+
+
+			Set Question1_SlideText = CSlideText(Question1.States.Item("Default").Objects(1))
+			Set Question1_SlideText = Nothing
+
+			Set Question1_SlideImage = CSlideImage(Question1.States.Item("Default").Objects(2))
+			Question1_SlideImage.Filename = c.GetAttrib("ThirdPic")
+			Question1_SlideImage.Load
+			Set Question1_SlideImage = Nothing
+	End Select
+
+	
+	Question1.InputMasks.Reset
+	
+	If Keyboard.GetState() = ebStateOpen Then
+		Question1EchoClients.RemoveAll
+		Question1.InputMasks.Add Keyboard.CreateInputMask("{RIGHTARROW}{LEFTARROW}", "", CLng(Question1.Duration), CLng("1"), ebEndResponseActionTerminate, CLogical("Yes"), "", "", "ResponseMode:All ProcessBackspace:Yes")
+
+	
+	End If
+
+	Question1.Run
+	
+	c.SetAttrib Question1.Name & ".OnsetDelay", Question1.OnsetDelay
+	c.SetAttrib Question1.Name & ".OnsetTime", Question1.OnsetTime
+	c.SetAttrib Question1.Name & ".DurationError", Question1.DurationError
+	c.SetAttrib Question1.Name & ".RTTime", Question1.RTTime
+	c.SetAttrib Question1.Name & ".ACC", Question1.ACC
+	c.SetAttrib Question1.Name & ".RT", Question1.RT
+	c.SetAttrib Question1.Name & ".RESP", Question1.RESP
+	c.SetAttrib Question1.Name & ".CRESP", Question1.CRESP
+	
+	listforpers.Run c
+	
+	
+	Select Case FinalQuestion.ActiveState
+		Case "Default"
+
+
+			Set FinalQuestion_SlideText = CSlideText(FinalQuestion.States.Item("Default").Objects(1))
+			Set FinalQuestion_SlideText = Nothing
+
+			Set FinalQuestion_SlideImage = CSlideImage(FinalQuestion.States.Item("Default").Objects(2))
+			FinalQuestion_SlideImage.Filename = c.GetAttrib("ThirdPic")
+			FinalQuestion_SlideImage.Load
+			Set FinalQuestion_SlideImage = Nothing
+	End Select
+
+	
+	FinalQuestion.InputMasks.Reset
+	
+	If Keyboard.GetState() = ebStateOpen Then
+		FinalQuestionEchoClients.RemoveAll
+		FinalQuestion.InputMasks.Add Keyboard.CreateInputMask("{ANY}", "", CLng(FinalQuestion.Duration), CLng("1"), ebEndResponseActionTerminate, CLogical("Yes"), "", "", "ResponseMode:All ProcessBackspace:Yes")
+
+	
+	End If
+
+	FinalQuestion.Run
+	
+	c.SetAttrib FinalQuestion.Name & ".OnsetDelay", FinalQuestion.OnsetDelay
+	c.SetAttrib FinalQuestion.Name & ".OnsetTime", FinalQuestion.OnsetTime
+	c.SetAttrib FinalQuestion.Name & ".DurationError", FinalQuestion.DurationError
+	c.SetAttrib FinalQuestion.Name & ".RTTime", FinalQuestion.RTTime
+	c.SetAttrib FinalQuestion.Name & ".ACC", FinalQuestion.ACC
+	c.SetAttrib FinalQuestion.Name & ".RT", FinalQuestion.RT
+	c.SetAttrib FinalQuestion.Name & ".RESP", FinalQuestion.RESP
+	c.SetAttrib FinalQuestion.Name & ".CRESP", FinalQuestion.CRESP
+	
+	c.SetAttrib Wait1.Name & ".RTTime", Wait1.RTTime
+	c.SetAttrib Wait1.Name & ".ACC", Wait1.ACC
+	c.SetAttrib Wait1.Name & ".RT", Wait1.RT
+	c.SetAttrib Wait1.Name & ".RESP", Wait1.RESP
+	c.SetAttrib Wait1.Name & ".CRESP", Wait1.CRESP
+	
+	c.SetAttrib Question1.Name & ".OnsetDelay", Question1.OnsetDelay
+	c.SetAttrib Question1.Name & ".OnsetTime", Question1.OnsetTime
+	c.SetAttrib Question1.Name & ".DurationError", Question1.DurationError
+	c.SetAttrib Question1.Name & ".RTTime", Question1.RTTime
+	c.SetAttrib Question1.Name & ".ACC", Question1.ACC
+	c.SetAttrib Question1.Name & ".RT", Question1.RT
+	c.SetAttrib Question1.Name & ".RESP", Question1.RESP
+	c.SetAttrib Question1.Name & ".CRESP", Question1.CRESP
+	
+	c.SetAttrib FinalQuestion.Name & ".OnsetDelay", FinalQuestion.OnsetDelay
+	c.SetAttrib FinalQuestion.Name & ".OnsetTime", FinalQuestion.OnsetTime
+	c.SetAttrib FinalQuestion.Name & ".DurationError", FinalQuestion.DurationError
+	c.SetAttrib FinalQuestion.Name & ".RTTime", FinalQuestion.RTTime
+	c.SetAttrib FinalQuestion.Name & ".ACC", FinalQuestion.ACC
+	c.SetAttrib FinalQuestion.Name & ".RT", FinalQuestion.RT
+	c.SetAttrib FinalQuestion.Name & ".RESP", FinalQuestion.RESP
+	c.SetAttrib FinalQuestion.Name & ".CRESP", FinalQuestion.CRESP
+	
+
+	c.Log
+End Sub
+
+Sub BlockProc_Run(c as Context)
+	
+	
+	IntroPractice.InputMasks.Reset
+	
+	If Keyboard.GetState() = ebStateOpen Then
+		IntroPracticeEchoClients.RemoveAll
+		IntroPractice.InputMasks.Add Keyboard.CreateInputMask("{ANY}", "", CLng(IntroPractice.Duration), CLng("1"), ebEndResponseActionTerminate, CLogical("Yes"), "", "", "ResponseMode:All ProcessBackspace:Yes")
+
+	
+	End If
+
+	IntroPractice.Run
+	CombiPractice.Run c
+	
+	
+	Intro5.InputMasks.Reset
+	
+	If Keyboard.GetState() = ebStateOpen Then
+		Intro5EchoClients.RemoveAll
+		Intro5.InputMasks.Add Keyboard.CreateInputMask("{ANY}", "", CLng(Intro5.Duration), CLng("1"), ebEndResponseActionTerminate, CLogical("Yes"), "", "", "ResponseMode:All ProcessBackspace:Yes")
+
+	
+	End If
+
+	Intro5.Run
+	Combi.Run c
+	
+	
+	Select Case Slide9.ActiveState
+		Case "Default"
+
+
+			Set Slide9_SlideText = CSlideText(Slide9.States.Item("Default").Objects(1))
+			Set Slide9_SlideText = Nothing
+	End Select
+
+	Slide9.Run
+	
+
+	c.Log
+End Sub
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Sub Scaleproc_Run(c as Context)
+	
+	
+	Select Case Scale.ActiveState
+		Case "Default"
+
+
+			Set Scale_SlideText = CSlideText(Scale.States.Item("Default").Objects(1))
+			Scale_SlideText.Text = c.GetAttrib("question")
+			Set Scale_SlideText = Nothing
+
+			Set Scale_SlideText = CSlideText(Scale.States.Item("Default").Objects(2))
+			Scale_SlideText.Text = c.GetAttrib("secondscale")
+			Set Scale_SlideText = Nothing
+
+			Set Scale_SlideText = CSlideText(Scale.States.Item("Default").Objects(3))
+			Scale_SlideText.Text = c.GetAttrib("firstscale")
+			Set Scale_SlideText = Nothing
+
+			Set Scale_SlideImage = CSlideImage(Scale.States.Item("Default").Objects(4))
+			Scale_SlideImage.Filename = c.GetAttrib("thirdpic")
+			Scale_SlideImage.Load
+			Set Scale_SlideImage = Nothing
+	End Select
+
+	Scale.Run
+	
+	c.SetAttrib Scale.Name & ".OnsetDelay", Scale.OnsetDelay
+	c.SetAttrib Scale.Name & ".OnsetTime", Scale.OnsetTime
+	c.SetAttrib Scale.Name & ".DurationError", Scale.DurationError
+	c.SetAttrib Scale.Name & ".RTTime", Scale.RTTime
+	c.SetAttrib Scale.Name & ".ACC", Scale.ACC
+	c.SetAttrib Scale.Name & ".RT", Scale.RT
+	c.SetAttrib Scale.Name & ".RESP", Scale.RESP
+	c.SetAttrib Scale.Name & ".CRESP", Scale.CRESP
+	
+	
+	'''''''''''''''''''''''''''''''''''''''''''''
+	' InLine - Rating BEGIN
+	'''''''''''''''''''''''''''''''''''''''''''''
+	'Matrix Setup
+	Call DefaultTextProp
+	Call DrawLikeFace
+	Call ClearForm
+			
+'Codes response (task-specific)
+	c.SetAttrib "PainRating", CbX
+'	c.SetAttrib "LikeRT", ButtonBoxResponse.RT
+	c.SetAttrib "ScaleDuration", ScaleDuration            
+	c.SetAttrib "ScaleStartTime", ScaleStartTime                 ''''''''''''''
+    c.SetAttrib "FirstResponseTime", FirstResponseTime           ''''''''''''''''
+    c.SetAttrib "VBAscale" , Tag
+
+
+
+
+      'Tag = Str((NewButtonPosn - slrLeft) / (slrRight - slrLeft) * 100) 
+      'c.SetAttrib "PainResponse" , Tag
+      'CSlideImage(Slide1.States.Item("Default").Objects(1)).X = 300
+      'Slide1.Run
+	'''''''''''''''''''''''''''''''''''''''''''''
+	' InLine - Rating END
+	'''''''''''''''''''''''''''''''''''''''''''''
+	
+	c.SetAttrib Scale.Name & ".OnsetDelay", Scale.OnsetDelay
+	c.SetAttrib Scale.Name & ".OnsetTime", Scale.OnsetTime
+	c.SetAttrib Scale.Name & ".DurationError", Scale.DurationError
+	c.SetAttrib Scale.Name & ".RTTime", Scale.RTTime
+	c.SetAttrib Scale.Name & ".ACC", Scale.ACC
+	c.SetAttrib Scale.Name & ".RT", Scale.RT
+	c.SetAttrib Scale.Name & ".RESP", Scale.RESP
+	c.SetAttrib Scale.Name & ".CRESP", Scale.CRESP
+	
+
+	c.Log
+End Sub
+
+
+
+
+
+
+
+
+
+Sub TrialProc2_Run(c as Context)
+	
+	fixation.Run
+	
+	
+	Select Case Slide1.ActiveState
+		Case "Default"
+
+
+			Set Slide1_SlideImage = CSlideImage(Slide1.States.Item("Default").Objects(1))
+			Slide1_SlideImage.Filename = c.GetAttrib("FirstPic")
+			Slide1_SlideImage.Load
+			Set Slide1_SlideImage = Nothing
+	End Select
+
+	Slide1.Run
+	
+	
+	
+	Select Case Slide2.ActiveState
+		Case "Default"
+
+
+			Set Slide2_SlideImage = CSlideImage(Slide2.States.Item("Default").Objects(1))
+			Slide2_SlideImage.Filename = c.GetAttrib("SecondPic")
+			Slide2_SlideImage.Load
+			Set Slide2_SlideImage = Nothing
+	End Select
+
+	Slide2.Run
+	
+	
+	
+	Select Case Slide3.ActiveState
+		Case "Default"
+
+
+			Set Slide3_SlideText = CSlideText(Slide3.States.Item("Default").Objects(1))
+			Set Slide3_SlideText = Nothing
+
+			Set Slide3_SlideImage = CSlideImage(Slide3.States.Item("Default").Objects(2))
+			Slide3_SlideImage.Filename = c.GetAttrib("ThirdPic")
+			Slide3_SlideImage.Load
+			Set Slide3_SlideImage = Nothing
+	End Select
+
+	Slide3.Run
+	
+	
+	
+	Select Case Question1.ActiveState
+		Case "Default"
+
+
+			Set Question1_SlideText = CSlideText(Question1.States.Item("Default").Objects(1))
+			Set Question1_SlideText = Nothing
+
+			Set Question1_SlideImage = CSlideImage(Question1.States.Item("Default").Objects(2))
+			Question1_SlideImage.Filename = c.GetAttrib("ThirdPic")
+			Question1_SlideImage.Load
+			Set Question1_SlideImage = Nothing
+	End Select
+
+	
+	Question1.InputMasks.Reset
+	
+	If Keyboard.GetState() = ebStateOpen Then
+		Question1EchoClients.RemoveAll
+		Question1.InputMasks.Add Keyboard.CreateInputMask("{RIGHTARROW}{LEFTARROW}", "", CLng(Question1.Duration), CLng("1"), ebEndResponseActionTerminate, CLogical("Yes"), "", "", "ResponseMode:All ProcessBackspace:Yes")
+
+	
+	End If
+
+	Question1.Run
+	
+	c.SetAttrib Question1.Name & ".OnsetDelay", Question1.OnsetDelay
+	c.SetAttrib Question1.Name & ".OnsetTime", Question1.OnsetTime
+	c.SetAttrib Question1.Name & ".DurationError", Question1.DurationError
+	c.SetAttrib Question1.Name & ".RTTime", Question1.RTTime
+	c.SetAttrib Question1.Name & ".ACC", Question1.ACC
+	c.SetAttrib Question1.Name & ".RT", Question1.RT
+	c.SetAttrib Question1.Name & ".RESP", Question1.RESP
+	c.SetAttrib Question1.Name & ".CRESP", Question1.CRESP
+	
+	listofrobj2.Run c
+	c.SetAttrib Question1.Name & ".OnsetDelay", Question1.OnsetDelay
+	c.SetAttrib Question1.Name & ".OnsetTime", Question1.OnsetTime
+	c.SetAttrib Question1.Name & ".DurationError", Question1.DurationError
+	c.SetAttrib Question1.Name & ".RTTime", Question1.RTTime
+	c.SetAttrib Question1.Name & ".ACC", Question1.ACC
+	c.SetAttrib Question1.Name & ".RT", Question1.RT
+	c.SetAttrib Question1.Name & ".RESP", Question1.RESP
+	c.SetAttrib Question1.Name & ".CRESP", Question1.CRESP
+	
+
+	c.Log
+End Sub
+
+
+
+
+
+
+
+
+
+'--------------------------------------------------------------------------
+' InitDevices
+'
+'--------------------------------------------------------------------------
+Sub InitDevices(c As Context)
+
+
+
+	SetOSThreadPriority 3
+
+
+	Set Display = New DisplayDevice
+	Display.Name = "Display"
+
+	Dim DisplayDisplayDeviceInfo As DisplayDeviceInfo
+	DisplayDisplayDeviceInfo.XRes = 1024
+	DisplayDisplayDeviceInfo.YRes = 768
+	DisplayDisplayDeviceInfo.ColorDepth = 16
+	DisplayDisplayDeviceInfo.RefreshRate = 0
+	DisplayDisplayDeviceInfo.NumPages = 0
+	
+	'Load values from context if they exist
+	If c.AttribExists(Display.Name & ".XRes") Then DisplayDisplayDeviceInfo.XRes = CLng(c.GetAttrib(Display.Name & ".XRes"))
+	If c.AttribExists(Display.Name & ".YRes") Then DisplayDisplayDeviceInfo.YRes = CLng(c.GetAttrib(Display.Name & ".YRes"))
+	If c.AttribExists(Display.Name & ".ColorDepth") Then DisplayDisplayDeviceInfo.ColorDepth = CLng(c.GetAttrib(Display.Name & ".ColorDepth"))
+
+	'Open the device, unless the context values indicate otherwise
+	Dim DisplayOpen As Boolean
+	DisplayOpen = True
+	If c.AttribExists(Display.Name & ".Open") Then DisplayOpen = CLogical(c.GetAttrib(Display.Name & ".Open"))
+	If DisplayOpen = True Then
+		Display.Open DisplayDisplayDeviceInfo
+		c.SetAttrib Display.Name & ".RefreshRate", Format$(Display.CalculatedRefreshRate, "0.000")
+	End If
+
+	Set Sound = New SoundDevice
+	Sound.Name = "Sound"
+
+	Dim SoundSoundOutDeviceInfo As SoundDeviceInfo
+	SoundSoundOutDeviceInfo.Channels = 1
+	SoundSoundOutDeviceInfo.SamplesPerSecond = 44100
+	SoundSoundOutDeviceInfo.BitsPerSample = 16
+	'Load values from context if they exist
+	If c.AttribExists(Sound.Name & ".Channels") Then SoundSoundOutDeviceInfo.Channels = CLng(c.GetAttrib(Sound.Name & ".Channels"))
+	If c.AttribExists(Sound.Name & ".SamplesPerSecond") Then SoundSoundOutDeviceInfo.SamplesPerSecond = CLng(c.GetAttrib(Sound.Name & ".SamplesPerSecond"))
+	If c.AttribExists(Sound.Name & ".BitsPerSample") Then SoundSoundOutDeviceInfo.BitsPerSample = CLng(c.GetAttrib(Sound.Name & ".BitsPerSample"))
+
+	'Open the device, unless the context values indicate otherwise
+	Dim SoundOpen As Boolean
+	SoundOpen = True
+	If c.AttribExists(Sound.Name & ".Open") Then SoundOpen = CLogical(c.GetAttrib(Sound.Name & ".Open"))
+	If SoundOpen = True Then
+		Sound.Open SoundSoundOutDeviceInfo
+	End If
+
+	Set Keyboard = New KeyboardDevice
+	Keyboard.Name = "Keyboard"
+
+	Dim KeyboardKeyboardDeviceInfo as KeyboardDeviceInfo
+	KeyboardKeyboardDeviceInfo.CollectionMode = ebPressesAndReleases
+	KeyboardKeyboardDeviceInfo.CapsLock = ebCapsLockOff
+	KeyboardKeyboardDeviceInfo.NumLock = ebNumLockOn
+	'Load values from context if they exist
+	If c.AttribExists(Keyboard.Name & ".CollectionMode") Then KeyboardKeyboardDeviceInfo.CollectionMode = CLng(c.GetAttrib(Keyboard.Name & ".CollectionMode"))
+	If c.AttribExists(Keyboard.Name & ".CapsLock") Then KeyboardKeyboardDeviceInfo.CapsLock = CLng(c.GetAttrib(Keyboard.Name & ".CapsLock"))
+	If c.AttribExists(Keyboard.Name & ".NumLock") Then KeyboardKeyboardDeviceInfo.NumLock = CLng(c.GetAttrib(Keyboard.Name & ".NumLock"))
+	If c.AttribExists(Keyboard.Name & ".EmulateDeviceName") Then KeyboardKeyboardDeviceInfo.EmulateDeviceName = c.GetAttrib(Keyboard.Name & ".EmulateDeviceName")
+
+	'Open the device, unless the context values indicate otherwise
+	Dim KeyboardOpen As Boolean
+	KeyboardOpen = True
+	If c.AttribExists(Keyboard.Name & ".Open") Then KeyboardOpen = CLogical(c.GetAttrib(Keyboard.Name & ".Open"))
+	If KeyboardOpen = True Then
+		Keyboard.Open KeyboardKeyboardDeviceInfo
+	End If
+
+	Set Mouse = New MouseDevice
+	Mouse.Name = "Mouse"
+
+	Dim MouseMouseDeviceInfo as MouseDeviceInfo
+	MouseMouseDeviceInfo.OpenMode = ebMouseOpenModeDirect
+	MouseMouseDeviceInfo.CollectionMode = ebPressesOnly
+	MouseMouseDeviceInfo.ShowCursor = False
+	'Load values from context if they exist
+	If c.AttribExists(Mouse.Name & ".OpenMode") Then MouseMouseDeviceInfo.OpenMode = CLng(c.GetAttrib(Mouse.Name & ".OpenMode"))
+	If c.AttribExists(Mouse.Name & ".CollectionMode") Then MouseMouseDeviceInfo.CollectionMode = CLng(c.GetAttrib(Mouse.Name & ".CollectionMode"))
+	If c.AttribExists(Mouse.Name & ".ShowCursor") Then MouseMouseDeviceInfo.ShowCursor = CLogical(c.GetAttrib(Mouse.Name & ".ShowCursor"))
+	If c.AttribExists(Mouse.Name & ".EmulateDeviceName") Then MouseMouseDeviceInfo.EmulateDeviceName = c.GetAttrib(Mouse.Name & ".EmulateDeviceName")
+
+	'Open the device, unless the context values indicate otherwise
+	Dim MouseOpen As Boolean
+	MouseOpen = True
+	If c.AttribExists(Mouse.Name & ".Open") Then MouseOpen = CLogical(c.GetAttrib(Mouse.Name & ".Open"))
+	If MouseOpen = True Then
+		Mouse.Open MouseMouseDeviceInfo
+	End If
+
+	Set Serial = New SerialDevice
+	Serial.Name = "Serial"
+
+	Dim SerialSerialDeviceInfo As SerialDeviceInfo
+	SerialSerialDeviceInfo.CommPort = 1
+	SerialSerialDeviceInfo.BaudRate = 9600
+	SerialSerialDeviceInfo.DataBits = 8
+	SerialSerialDeviceInfo.Parity = ebParityNo
+	SerialSerialDeviceInfo.StopBits = ebStopBits1_0
+	'Load values from context if they exist
+	If c.AttribExists(Serial.Name & ".CommPort") Then SerialSerialDeviceInfo.CommPort = CLng(c.GetAttrib(Serial.Name & ".CommPort"))
+	If c.AttribExists(Serial.Name & ".BaudRate") Then SerialSerialDeviceInfo.BaudRate = CLng(c.GetAttrib(Serial.Name & ".BaudRate"))
+	If c.AttribExists(Serial.Name & ".DataBits") Then SerialSerialDeviceInfo.DataBits = CLng(c.GetAttrib(Serial.Name & ".DataBits"))
+	If c.AttribExists(Serial.Name & ".Parity") Then SerialSerialDeviceInfo.Parity = CLng(c.GetAttrib(Serial.Name & ".Parity"))
+	If c.AttribExists(Serial.Name & ".StopBits") Then SerialSerialDeviceInfo.StopBits = CLng(c.GetAttrib(Serial.Name & ".StopBits"))
+	
+	Set Port2 = New PortDevice
+	Port2.Name = "Port2"
+
+
+	SetOSThreadPriority 0
+
+End Sub
+
+
+
+'--------------------------------------------------------------------------
+' InitObjects
+'
+'--------------------------------------------------------------------------
+Sub InitObjects(c As Context)
+
+	Set SessionProc = New Procedure
+	SessionProc.Name = "SessionProc"
+	SessionProc.Tag = ""
+	SessionProc.Subroutine = "SessionProc_Run"
+
+	Set TheEnd = New TextDisplay
+	TheEnd.Name = "TheEnd"
+	TheEnd.Tag = ""
+
+	Set TheEndEchoClients = New EchoClientCollection
+
+	InitTextDisplayDefaults TheEnd
+
+	TheEnd.Text = "\n\n\n\n"
+	TheEnd.BackColor = CColor("black")
+	TheEnd.ForeColor = CColor("white")
+	TheEnd.Width = "95%"
+	TheEnd.Height = "95%"
+	TheEnd.FontName = "Arial"
+	TheEnd.FontSize = "25"
+	TheEnd.FontBold = CLogical("No")
+	TheEnd.Duration = CLng("1000")
+	TheEnd.TimingMode = ebTimingModeEvent
+	TheEnd.PreRelease = Val("0")
+
+	TheEnd.OnsetSync = 1
+	TheEnd.OffsetSync = 0
+
+	Set BlkScrn = New TextDisplay
+	BlkScrn.Name = "BlkScrn"
+	BlkScrn.Tag = ""
+
+	InitTextDisplayDefaults BlkScrn
+
+	BlkScrn.Text = ""
+	BlkScrn.BackColor = CColor("black")
+	BlkScrn.Duration = CLng("750")
+	BlkScrn.TimingMode = ebTimingModeEvent
+	BlkScrn.PreRelease = Val("0")
+
+	BlkScrn.OnsetSync = 1
+	BlkScrn.OffsetSync = 0
+
+	Set Obj = New List
+	Obj.Name = "Obj"
+	Obj.Tag = ""
+
+	'Initialization for Obj
+	
+	Set Obj.Order = New SequentialOrder
+	Set Obj.Deletion = NoDeletion
+	Obj.ResetEveryRun = False
+
+	' Create the column headings
+	Obj.AddAttrib "FirstPic"
+	Obj.AddAttrib "SecondPic"
+	Obj.AddAttrib "ThirdPic"
+	Obj.Filename = ""
+	Obj.LoadMethod = ebLoadMethodEmbedded
+
+	Obj.Load
+
+	Set Obj.TerminateCondition = Cycles(1)
+	Set Obj.ResetCondition = Samples(10)
+	Obj.Reset
+	
+	Set TrialProc = New Procedure
+	TrialProc.Name = "TrialProc"
+	TrialProc.Tag = ""
+	TrialProc.Subroutine = "TrialProc_Run"
+
+	Set BlockList = New List
+	BlockList.Name = "BlockList"
+	BlockList.Tag = ""
+
+	'Initialization for BlockList
+	
+	Set BlockList.Order = New SequentialOrder
+	Set BlockList.Deletion = NoDeletion
+	BlockList.ResetEveryRun = True
+
+	' Create the column headings
+	BlockList.AddAttrib "BlockNum"
+	BlockList.AddAttrib "message"
+	BlockList.Filename = ""
+	BlockList.LoadMethod = ebLoadMethodEmbedded
+
+	BlockList.Load
+
+	Set BlockList.TerminateCondition = Cycles(1)
+	Set BlockList.ResetCondition = Samples(1)
+	BlockList.Reset
+	
+	Set BlockProc = New Procedure
+	BlockProc.Name = "BlockProc"
+	BlockProc.Tag = ""
+	BlockProc.Subroutine = "BlockProc_Run"
+
+	Set oldIntro3 = New TextDisplay
+	oldIntro3.Name = "oldIntro3"
+	oldIntro3.Tag = ""
+
+	Set oldIntro3EchoClients = New EchoClientCollection
+
+	InitTextDisplayDefaults oldIntro3
+
+	oldIntro3.Text = "When you rate how painful the situation was, you will use the scale as shown below.\n\nUse the right arrow key or left arrow key to move the cursor. \n" &_ 
+				"\nWhen you are happy with your response, press the down arrow key and you will be shown the next picture.\n"
+	oldIntro3.BackColor = CColor("black")
+	oldIntro3.BorderWidth = CLng("50")
+	oldIntro3.ForeColor = CColor("white")
+	oldIntro3.AlignVertical = "top"
+	oldIntro3.AlignHorizontal = "left"
+	oldIntro3.FontSize = "28"
+	oldIntro3.Duration = CLng("100")
+	oldIntro3.TimingMode = ebTimingModeEvent
+	oldIntro3.PreRelease = Val("0")
+
+	oldIntro3.OnsetSync = 1
+	oldIntro3.OffsetSync = 0
+
+	Set KeyboardResponse = New TextDisplay
+	KeyboardResponse.Name = "KeyboardResponse"
+	KeyboardResponse.Tag = ""
+
+	Set KeyboardResponseEchoClients = New EchoClientCollection
+
+	InitTextDisplayDefaults KeyboardResponse
+
+	KeyboardResponse.Text = ""
+	KeyboardResponse.BackStyle = "transparent"
+	KeyboardResponse.BackColor = CColor("black")
+	KeyboardResponse.Duration = CLng("1")
+	KeyboardResponse.TimingMode = ebTimingModeEvent
+	KeyboardResponse.PreRelease = Val("0")
+
+	KeyboardResponse.OnsetSync = 0
+	KeyboardResponse.OffsetSync = 0
+
+	Set oldScale = New TextDisplay
+	oldScale.Name = "oldScale"
+	oldScale.Tag = ""
+
+	InitTextDisplayDefaults oldScale
+
+	oldScale.Text = ""
+	oldScale.BackColor = CColor("black")
+	oldScale.ForeColor = CColor("white")
+	oldScale.Duration = CLng("100")
+	oldScale.TimingMode = ebTimingModeCumulative
+	oldScale.PreRelease = Val("100")
+
+	oldScale.OnsetSync = 1
+	oldScale.OffsetSync = 0
+
+	Set Slide1 = New Slide
+	Slide1.Name = "Slide1"
+	Slide1.Tag = ""
+	Slide1.Duration = CLng("500")
+	Slide1.TimingMode = ebTimingModeCumulative
+	Slide1.PreRelease = Val("100")
+
+	Slide1.OnsetSync = 1
+	Slide1.OffsetSync = 0
+
+	Set Slide1_State = New SlideState
+	Slide1_State.Name = "Default"
+
+	InitSlideStateDefaults Slide1_State
+
+	Slide1_State.BackColor = CColor("black")
+
+	Slide1.States.Add Slide1_State, "Default"
+
+
+	Set Slide1_SlideImage = New SlideImage
+	Slide1_SlideImage.Name = "Image1"
+
+	InitSlideImageDefaults Slide1_SlideImage
+
+	Slide1_SlideImage.Y = "40%"
+	Slide1_SlideImage.Width = "100%"
+	Slide1_SlideImage.Height = "100%"
+	Slide1_SlideImage.BackColor = CColor("black")
+	Slide1.States.Item("Default").Objects.Add Slide1_SlideImage, "Image1"
+	Slide1.ActiveState = "Default"
+
+	Set Slide2 = New Slide
+	Slide2.Name = "Slide2"
+	Slide2.Tag = ""
+	Slide2.Duration = CLng("200")
+	Slide2.TimingMode = ebTimingModeCumulative
+	Slide2.PreRelease = Val("100")
+
+	Slide2.OnsetSync = 1
+	Slide2.OffsetSync = 0
+
+	Set Slide2_State = New SlideState
+	Slide2_State.Name = "Default"
+
+	InitSlideStateDefaults Slide2_State
+
+	Slide2_State.BackColor = CColor("black")
+
+	Slide2.States.Add Slide2_State, "Default"
+
+
+	Set Slide2_SlideImage = New SlideImage
+	Slide2_SlideImage.Name = "Image1"
+
+	InitSlideImageDefaults Slide2_SlideImage
+
+	Slide2_SlideImage.Y = "40%"
+	Slide2_SlideImage.Width = "100%"
+	Slide2_SlideImage.Height = "100%"
+	Slide2_SlideImage.BackColor = CColor("black")
+	Slide2.States.Item("Default").Objects.Add Slide2_SlideImage, "Image1"
+	Slide2.ActiveState = "Default"
+
+	Set Slide3 = New Slide
+	Slide3.Name = "Slide3"
+	Slide3.Tag = ""
+	Slide3.Duration = CLng("1")
+	Slide3.TimingMode = ebTimingModeCumulative
+	Slide3.PreRelease = Val("100")
+
+	Slide3.OnsetSync = 1
+	Slide3.OffsetSync = 0
+
+	Set Slide3_State = New SlideState
+	Slide3_State.Name = "Default"
+
+	InitSlideStateDefaults Slide3_State
+
+	Slide3_State.BackColor = CColor("black")
+
+	Slide3.States.Add Slide3_State, "Default"
+
+
+	Set Slide3_SlideText = New SlideText
+	Slide3_SlideText.Name = "Text1"
+
+	InitSlideTextDefaults Slide3_SlideText
+
+	Slide3_SlideText.Text = "Presione FLECHA ABAJO\nexactamente cuando COMPRENDA lo que pasó"
+	Slide3_SlideText.Y = "600"
+	Slide3_SlideText.Width = "62%"
+	Slide3_SlideText.Height = "11%"
+	Slide3_SlideText.ForeColor = CColor("gray")
+	Slide3_SlideText.BackColor = CColor("black")
+	Slide3.States.Item("Default").Objects.Add Slide3_SlideText, "Text1"
+
+	Set Slide3_SlideImage = New SlideImage
+	Slide3_SlideImage.Name = "Image1"
+
+	InitSlideImageDefaults Slide3_SlideImage
+
+	Slide3_SlideImage.Y = "40%"
+	Slide3_SlideImage.Width = "100%"
+	Slide3_SlideImage.Height = "100%"
+	Slide3_SlideImage.BackColor = CColor("black")
+	Slide3.States.Item("Default").Objects.Add Slide3_SlideImage, "Image1"
+	Slide3.ActiveState = "Default"
+
+	Set fixation = New TextDisplay
+	fixation.Name = "fixation"
+	fixation.Tag = ""
+
+	InitTextDisplayDefaults fixation
+
+	fixation.Text = "+"
+	fixation.BackColor = CColor("black")
+	fixation.ForeColor = CColor("silver")
+	fixation.FontSize = "40"
+	fixation.Duration = CLng("1000")
+	fixation.TimingMode = ebTimingModeCumulative
+	fixation.PreRelease = Val("100")
+
+	fixation.OnsetSync = 1
+	fixation.OffsetSync = 0
+
+	Set confirmation = New TextDisplay
+	confirmation.Name = "confirmation"
+	confirmation.Tag = ""
+
+	Set confirmationEchoClients = New EchoClientCollection
+
+	InitTextDisplayDefaults confirmation
+
+	confirmation.BackColor = CColor("gray")
+	confirmation.FontSize = "28"
+	confirmation.Duration = CLng("-1")
+	confirmation.TimingMode = ebTimingModeCumulative
+	confirmation.PreRelease = Val("100")
+
+	confirmation.OnsetSync = 1
+	confirmation.OffsetSync = 0
+
+	Set Intro1 = New TextDisplay
+	Intro1.Name = "Intro1"
+	Intro1.Tag = ""
+
+	Set Intro1EchoClients = New EchoClientCollection
+
+	InitTextDisplayDefaults Intro1
+
+	Intro1.Text = "\nUsted verá algunas imágenes y luego le haremos algunas preguntas acerca de ellas\n\n\n(presione cualquier tecla para continuar)"
+	Intro1.BackColor = CColor("black")
+	Intro1.ForeColor = CColor("white")
+	Intro1.FontSize = "28"
+	Intro1.Duration = CLng("-1")
+	Intro1.TimingMode = ebTimingModeCumulative
+	Intro1.PreRelease = Val("100")
+
+	Intro1.OnsetSync = 1
+	Intro1.OffsetSync = 0
+
+	Set Intro4 = New TextDisplay
+	Intro4.Name = "Intro4"
+	Intro4.Tag = ""
+
+	Set Intro4EchoClients = New EchoClientCollection
+
+	InitTextDisplayDefaults Intro4
+
+	Intro4.Text = "Después de cada imágen, presione la FLECHA HACIA ABAJO en el momento exacto en que entieda lo que pasó, no antes ni después.\n\n\n(presione cualquier " &_ 
+				"tecla para comenzar)"
+	Intro4.BackColor = CColor("black")
+	Intro4.ForeColor = CColor("white")
+	Intro4.FontSize = "28"
+	Intro4.Duration = CLng("-1")
+	Intro4.TimingMode = ebTimingModeCumulative
+	Intro4.PreRelease = Val("100")
+
+	Intro4.OnsetSync = 1
+	Intro4.OffsetSync = 0
+
+	Set Scale = New Slide
+	Scale.Name = "Scale"
+	Scale.Tag = ""
+	Scale.Duration = CLng("50")
+	Scale.TimingMode = ebTimingModeEvent
+	Scale.PreRelease = Val("0")
+
+	Scale.OnsetSync = 1
+	Scale.OffsetSync = 0
+
+	Set Scale_State = New SlideState
+	Scale_State.Name = "Default"
+
+	InitSlideStateDefaults Scale_State
+
+	Scale_State.BackColor = CColor("black")
+
+	Scale.States.Add Scale_State, "Default"
+
+
+	Set Scale_SlideText = New SlideText
+	Scale_SlideText.Name = "Text3"
+
+	InitSlideTextDefaults Scale_SlideText
+
+	Scale_SlideText.Y = "571"
+	Scale_SlideText.Width = "84%"
+	Scale_SlideText.Height = "8%"
+	Scale_SlideText.ForeColor = CColor("white")
+	Scale_SlideText.BackColor = CColor("black")
+	Scale.States.Item("Default").Objects.Add Scale_SlideText, "Text3"
+
+	Set Scale_SlideText = New SlideText
+	Scale_SlideText.Name = "Text2"
+
+	InitSlideTextDefaults Scale_SlideText
+
+	Scale_SlideText.X = "848"
+	Scale_SlideText.Y = "730"
+	Scale_SlideText.Height = "6%"
+	Scale_SlideText.ForeColor = CColor("white")
+	Scale_SlideText.BackColor = CColor("black")
+	Scale.States.Item("Default").Objects.Add Scale_SlideText, "Text2"
+
+	Set Scale_SlideText = New SlideText
+	Scale_SlideText.Name = "Text1"
+
+	InitSlideTextDefaults Scale_SlideText
+
+	Scale_SlideText.X = "176"
+	Scale_SlideText.Y = "730"
+	Scale_SlideText.Height = "6%"
+	Scale_SlideText.ForeColor = CColor("white")
+	Scale_SlideText.BackColor = CColor("black")
+	Scale.States.Item("Default").Objects.Add Scale_SlideText, "Text1"
+
+	Set Scale_SlideImage = New SlideImage
+	Scale_SlideImage.Name = "Image3"
+
+	InitSlideImageDefaults Scale_SlideImage
+
+	Scale_SlideImage.Y = "40%"
+	Scale_SlideImage.Width = "100%"
+	Scale_SlideImage.Height = "100%"
+	Scale_SlideImage.BackColor = CColor("black")
+	Scale_SlideImage.BackStyle = "transparent"
+	Scale.States.Item("Default").Objects.Add Scale_SlideImage, "Image3"
+	Scale.ActiveState = "Default"
+
+	Set Intro2 = New TextDisplay
+	Intro2.Name = "Intro2"
+	Intro2.Tag = ""
+
+	Set Intro2EchoClients = New EchoClientCollection
+
+	InitTextDisplayDefaults Intro2
+
+	Intro2.Text = "No lo piense por mucho tiempo, simplemente díganos el primer pensamiento que le venga a la mente\n\n(presione cualquier tecla para continuar)"
+	Intro2.BackColor = CColor("black")
+	Intro2.ForeColor = CColor("white")
+	Intro2.FontSize = "28"
+	Intro2.Duration = CLng("-1")
+	Intro2.TimingMode = ebTimingModeEvent
+	Intro2.PreRelease = Val("0")
+
+	Intro2.OnsetSync = 1
+	Intro2.OffsetSync = 0
+
+	Set Intro3 = New Slide
+	Intro3.Name = "Intro3"
+	Intro3.Tag = ""
+	Intro3.Duration = CLng("50")
+	Intro3.TimingMode = ebTimingModeEvent
+	Intro3.PreRelease = Val("0")
+
+	Intro3.OnsetSync = 1
+	Intro3.OffsetSync = 0
+
+	Set Intro3_State = New SlideState
+	Intro3_State.Name = "Default"
+
+	InitSlideStateDefaults Intro3_State
+
+	Intro3_State.BackColor = CColor("black")
+
+	Intro3.States.Add Intro3_State, "Default"
+
+
+	Set Intro3_SlideText = New SlideText
+	Intro3_SlideText.Name = "Text1"
+
+	InitSlideTextDefaults Intro3_SlideText
+
+	Intro3_SlideText.Text = "\n\nUse las flechas izquierda y derecha para mover la línea y así responder las preguntas. \n\nPresione la flecha hacia abajo al terminar.\n"
+	Intro3_SlideText.Y = "156"
+	Intro3_SlideText.Width = "100%"
+	Intro3_SlideText.Height = "300"
+	Intro3_SlideText.ForeColor = CColor("white")
+	Intro3_SlideText.BackColor = CColor("black")
+	Intro3_SlideText.YAlign = "top"
+	Intro3_SlideText.FontSize = "20"
+	Intro3.States.Item("Default").Objects.Add Intro3_SlideText, "Text1"
+	Intro3.ActiveState = "Default"
+
+	Set Slide4 = New Slide
+	Slide4.Name = "Slide4"
+	Slide4.Tag = ""
+	Slide4.Duration = CLng("1000")
+	Slide4.TimingMode = ebTimingModeEvent
+	Slide4.PreRelease = Val("0")
+
+	Slide4.OnsetSync = 1
+	Slide4.OffsetSync = 0
+
+	Set Slide4_State = New SlideState
+	Slide4_State.Name = "Default"
+
+	InitSlideStateDefaults Slide4_State
+
+	Slide4_State.BackColor = CColor("black")
+
+	Slide4.States.Add Slide4_State, "Default"
+
+	Slide4.ActiveState = "Default"
+
+	Set Question1 = New Slide
+	Question1.Name = "Question1"
+	Question1.Tag = ""
+
+	Set Question1EchoClients = New EchoClientCollection
+	Question1.Duration = CLng("-1")
+	Question1.TimingMode = ebTimingModeEvent
+	Question1.PreRelease = Val("0")
+
+	Question1.OnsetSync = 1
+	Question1.OffsetSync = 0
+
+	Set Question1_State = New SlideState
+	Question1_State.Name = "Default"
+
+	InitSlideStateDefaults Question1_State
+
+	Question1_State.BackColor = CColor("black")
+
+	Question1.States.Add Question1_State, "Default"
+
+
+	Set Question1_SlideText = New SlideText
+	Question1_SlideText.Name = "Text1"
+
+	InitSlideTextDefaults Question1_SlideText
+
+	Question1_SlideText.Text = "¿Fue esto a propósito?\nNO <--    --> SI"
+	Question1_SlideText.X = "50%"
+	Question1_SlideText.Y = "87%"
+	Question1_SlideText.Width = "63%"
+	Question1_SlideText.Height = "11%"
+	Question1_SlideText.ForeColor = CColor("white")
+	Question1_SlideText.BackColor = CColor("black")
+	Question1.States.Item("Default").Objects.Add Question1_SlideText, "Text1"
+
+	Set Question1_SlideImage = New SlideImage
+	Question1_SlideImage.Name = "Image1"
+
+	InitSlideImageDefaults Question1_SlideImage
+
+	Question1_SlideImage.Y = "40%"
+	Question1_SlideImage.Width = "100%"
+	Question1_SlideImage.Height = "100%"
+	Question1_SlideImage.BackColor = CColor("black")
+	Question1.States.Item("Default").Objects.Add Question1_SlideImage, "Image1"
+	Question1.ActiveState = "Default"
+
+	Set Slide5 = New Slide
+	Slide5.Name = "Slide5"
+	Slide5.Tag = ""
+	Slide5.Duration = CLng("1000")
+	Slide5.TimingMode = ebTimingModeEvent
+	Slide5.PreRelease = Val("0")
+
+	Slide5.OnsetSync = 1
+	Slide5.OffsetSync = 0
+
+	Set Slide5_State = New SlideState
+	Slide5_State.Name = "Default"
+
+	InitSlideStateDefaults Slide5_State
+
+
+	Slide5.States.Add Slide5_State, "Default"
+
+	Slide5.ActiveState = "Default"
+
+	Set listforpers = New List
+	listforpers.Name = "listforpers"
+	listforpers.Tag = ""
+
+	'Initialization for listforpers
+	
+	Set listforpers.Order = New SequentialOrder
+	Set listforpers.Deletion = NoDeletion
+	listforpers.ResetEveryRun = False
+
+	' Create the column headings
+	listforpers.AddAttrib "Scale", False
+	listforpers.AddAttrib "firstscale", False
+	listforpers.AddAttrib "secondscale", False
+	listforpers.AddAttrib "question"
+	listforpers.Filename = ""
+	listforpers.LoadMethod = ebLoadMethodEmbedded
+
+	listforpers.Load
+
+	Set listforpers.TerminateCondition = Cycles(1)
+	Set listforpers.ResetCondition = Samples(6)
+	listforpers.Reset
+	
+	Set Scaleproc = New Procedure
+	Scaleproc.Name = "Scaleproc"
+	Scaleproc.Tag = ""
+	Scaleproc.Subroutine = "Scaleproc_Run"
+
+	Set Slide6 = New Slide
+	Slide6.Name = "Slide6"
+	Slide6.Tag = ""
+	Slide6.Duration = CLng("5000")
+	Slide6.TimingMode = ebTimingModeEvent
+	Slide6.PreRelease = Val("0")
+
+	Slide6.OnsetSync = 1
+	Slide6.OffsetSync = 0
+
+	Set Slide6_State = New SlideState
+	Slide6_State.Name = "Default"
+
+	InitSlideStateDefaults Slide6_State
+
+
+	Slide6.States.Add Slide6_State, "Default"
+
+
+	Set Slide6_SlideImage = New SlideImage
+	Slide6_SlideImage.Name = "Image1"
+	Slide6_SlideImage.Filename = "Relax2.bmp"
+	Slide6_SlideImage.Load
+
+	InitSlideImageDefaults Slide6_SlideImage
+
+	Slide6_SlideImage.Width = "100%"
+	Slide6_SlideImage.Height = "100%"
+	Slide6.States.Item("Default").Objects.Add Slide6_SlideImage, "Image1"
+	Slide6.ActiveState = "Default"
+
+	Set Slide7 = New Slide
+	Slide7.Name = "Slide7"
+	Slide7.Tag = ""
+	Slide7.Duration = CLng("5000")
+	Slide7.TimingMode = ebTimingModeEvent
+	Slide7.PreRelease = Val("0")
+
+	Slide7.OnsetSync = 1
+	Slide7.OffsetSync = 0
+
+	Set Slide7_State = New SlideState
+	Slide7_State.Name = "Default"
+
+	InitSlideStateDefaults Slide7_State
+
+
+	Slide7.States.Add Slide7_State, "Default"
+
+
+	Set Slide7_SlideImage = New SlideImage
+	Slide7_SlideImage.Name = "Image1"
+	Slide7_SlideImage.Filename = "Relax7.bmp"
+	Slide7_SlideImage.Load
+
+	InitSlideImageDefaults Slide7_SlideImage
+
+	Slide7_SlideImage.Width = "100%"
+	Slide7_SlideImage.Height = "100%"
+	Slide7.States.Item("Default").Objects.Add Slide7_SlideImage, "Image1"
+	Slide7.ActiveState = "Default"
+
+	Set Slide8 = New Slide
+	Slide8.Name = "Slide8"
+	Slide8.Tag = ""
+	Slide8.Duration = CLng("5000")
+	Slide8.TimingMode = ebTimingModeEvent
+	Slide8.PreRelease = Val("0")
+
+	Slide8.OnsetSync = 1
+	Slide8.OffsetSync = 0
+
+	Set Slide8_State = New SlideState
+	Slide8_State.Name = "Default"
+
+	InitSlideStateDefaults Slide8_State
+
+
+	Slide8.States.Add Slide8_State, "Default"
+
+
+	Set Slide8_SlideImage = New SlideImage
+	Slide8_SlideImage.Name = "Image1"
+	Slide8_SlideImage.Filename = "Relax10.bmp"
+	Slide8_SlideImage.Load
+
+	InitSlideImageDefaults Slide8_SlideImage
+
+	Slide8_SlideImage.Width = "100%"
+	Slide8_SlideImage.Height = "100%"
+	Slide8.States.Item("Default").Objects.Add Slide8_SlideImage, "Image1"
+	Slide8.ActiveState = "Default"
+
+	Set Slide9 = New Slide
+	Slide9.Name = "Slide9"
+	Slide9.Tag = ""
+	Slide9.Duration = CLng("5000")
+	Slide9.TimingMode = ebTimingModeEvent
+	Slide9.PreRelease = Val("0")
+
+	Slide9.OnsetSync = 1
+	Slide9.OffsetSync = 0
+
+	Set Slide9_State = New SlideState
+	Slide9_State.Name = "Default"
+
+	InitSlideStateDefaults Slide9_State
+
+	Slide9_State.BackColor = CColor("black")
+
+	Slide9.States.Add Slide9_State, "Default"
+
+
+	Set Slide9_SlideText = New SlideText
+	Slide9_SlideText.Name = "Text1"
+
+	InitSlideTextDefaults Slide9_SlideText
+
+	Slide9_SlideText.Text = "¡Muy buen trabajo! \n \n¡Gracias por su participación!"
+	Slide9_SlideText.Width = "79%"
+	Slide9_SlideText.Height = "41%"
+	Slide9_SlideText.ForeColor = CColor("white")
+	Slide9_SlideText.BackColor = CColor("black")
+	Slide9_SlideText.FontSize = "36"
+	Slide9.States.Item("Default").Objects.Add Slide9_SlideText, "Text1"
+	Slide9.ActiveState = "Default"
+
+	Set Pers = New List
+	Pers.Name = "Pers"
+	Pers.Tag = ""
+
+	'Initialization for Pers
+	
+	Set Pers.Order = New SequentialOrder
+	Set Pers.Deletion = NoDeletion
+	Pers.ResetEveryRun = False
+
+	' Create the column headings
+	Pers.AddAttrib "FirstPic"
+	Pers.AddAttrib "SecondPic"
+	Pers.AddAttrib "ThirdPic"
+	Pers.Filename = ""
+	Pers.LoadMethod = ebLoadMethodEmbedded
+
+	Pers.Load
+
+	Set Pers.TerminateCondition = Cycles(1)
+	Set Pers.ResetCondition = Samples(10)
+	Pers.Reset
+	
+	Set Obj2 = New List
+	Obj2.Name = "Obj2"
+	Obj2.Tag = ""
+
+	'Initialization for Obj2
+	
+	Set Obj2.Order = New SequentialOrder
+	Set Obj2.Deletion = NoDeletion
+	Obj2.ResetEveryRun = False
+
+	' Create the column headings
+	Obj2.Filename = ""
+	Obj2.LoadMethod = ebLoadMethodEmbedded
+
+	Obj2.Load
+
+	Set Obj2.TerminateCondition = Cycles(1)
+	Set Obj2.ResetCondition = Samples(1)
+	Obj2.Reset
+	
+	Set TrialProc2 = New Procedure
+	TrialProc2.Name = "TrialProc2"
+	TrialProc2.Tag = ""
+	TrialProc2.Subroutine = "TrialProc2_Run"
+
+	Set listofrobj2 = New List
+	listofrobj2.Name = "listofrobj2"
+	listofrobj2.Tag = ""
+
+	'Initialization for listofrobj2
+	
+	Set listofrobj2.Order = New SequentialOrder
+	Set listofrobj2.Deletion = NoDeletion
+	listofrobj2.ResetEveryRun = False
+
+	' Create the column headings
+	listofrobj2.AddAttrib "Scale", False
+	listofrobj2.AddAttrib "firstscale", False
+	listofrobj2.AddAttrib "secondscale", False
+	listofrobj2.AddAttrib "question"
+	listofrobj2.Filename = ""
+	listofrobj2.LoadMethod = ebLoadMethodEmbedded
+
+	listofrobj2.Load
+
+	Set listofrobj2.TerminateCondition = Cycles(1)
+	Set listofrobj2.ResetCondition = Samples(6)
+	listofrobj2.Reset
+	
+	Set Combi = New List
+	Combi.Name = "Combi"
+	Combi.Tag = ""
+
+	'Initialization for Combi
+	
+	Set Combi.Order = New SequentialOrder
+	Set Combi.Deletion = NoDeletion
+	Combi.ResetEveryRun = False
+
+	' Create the column headings
+	Combi.AddAttrib "FirstPic"
+	Combi.AddAttrib "SecondPic"
+	Combi.AddAttrib "ThirdPic"
+	Combi.Filename = ""
+	Combi.LoadMethod = ebLoadMethodEmbedded
+
+	Combi.Load
+
+	Set Combi.TerminateCondition = Cycles(1)
+	Set Combi.ResetCondition = Samples(24)
+	Combi.Reset
+	
+	Set Wait1 = New Wait
+	Wait1.Name = "Wait1"
+	Wait1.Tag = ""
+
+	Set Wait1EchoClients = New EchoClientCollection
+	Wait1.Duration = CLng("-1")
+	Wait1.TimingMode = ebTimingModeEvent
+	Wait1.PreRelease = Val("0")
+
+	Wait1.OnsetSync = 1
+	Wait1.OffsetSync = 0
+
+	Set Slide10 = New Slide
+	Slide10.Name = "Slide10"
+	Slide10.Tag = ""
+	Slide10.Duration = CLng("1000")
+	Slide10.TimingMode = ebTimingModeEvent
+	Slide10.PreRelease = Val("0")
+
+	Slide10.OnsetSync = 1
+	Slide10.OffsetSync = 0
+
+	Set Slide10_State = New SlideState
+	Slide10_State.Name = "Default"
+
+	InitSlideStateDefaults Slide10_State
+
+
+	Slide10.States.Add Slide10_State, "Default"
+
+	Slide10.ActiveState = "Default"
+
+	Set CombiPractice = New List
+	CombiPractice.Name = "CombiPractice"
+	CombiPractice.Tag = ""
+
+	'Initialization for CombiPractice
+	
+	Set CombiPractice.Order = New SequentialOrder
+	Set CombiPractice.Deletion = NoDeletion
+	CombiPractice.ResetEveryRun = False
+
+	' Create the column headings
+	CombiPractice.AddAttrib "FirstPic"
+	CombiPractice.AddAttrib "SecondPic"
+	CombiPractice.AddAttrib "ThirdPic"
+	CombiPractice.Filename = ""
+	CombiPractice.LoadMethod = ebLoadMethodEmbedded
+
+	CombiPractice.Load
+
+	Set CombiPractice.TerminateCondition = Cycles(1)
+	Set CombiPractice.ResetCondition = Samples(1)
+	CombiPractice.Reset
+	
+	Set Question2 = New Slide
+	Question2.Name = "Question2"
+	Question2.Tag = ""
+
+	Set Question2EchoClients = New EchoClientCollection
+	Question2.Duration = CLng("-1")
+	Question2.TimingMode = ebTimingModeEvent
+	Question2.PreRelease = Val("0")
+
+	Question2.OnsetSync = 1
+	Question2.OffsetSync = 0
+
+	Set Question2_State = New SlideState
+	Question2_State.Name = "Default"
+
+	InitSlideStateDefaults Question2_State
+
+	Question2_State.BackColor = CColor("black")
+
+	Question2.States.Add Question2_State, "Default"
+
+
+	Set Question2_SlideText = New SlideText
+	Question2_SlideText.Name = "Text1"
+
+	InitSlideTextDefaults Question2_SlideText
+
+	Question2_SlideText.Text = "¿Fue esto a propósito?\nNO <--    --> SI"
+	Question2_SlideText.X = "50%"
+	Question2_SlideText.Y = "87%"
+	Question2_SlideText.Width = "63%"
+	Question2_SlideText.Height = "11%"
+	Question2_SlideText.ForeColor = CColor("white")
+	Question2_SlideText.BackColor = CColor("black")
+	Question2.States.Item("Default").Objects.Add Question2_SlideText, "Text1"
+
+	Set Question2_SlideImage = New SlideImage
+	Question2_SlideImage.Name = "Image1"
+
+	InitSlideImageDefaults Question2_SlideImage
+
+	Question2_SlideImage.Y = "40%"
+	Question2_SlideImage.Width = "100%"
+	Question2_SlideImage.Height = "100%"
+	Question2_SlideImage.BackColor = CColor("black")
+	Question2.States.Item("Default").Objects.Add Question2_SlideImage, "Image1"
+	Question2.ActiveState = "Default"
+
+	Set FinalQuestion = New Slide
+	FinalQuestion.Name = "FinalQuestion"
+	FinalQuestion.Tag = ""
+
+	Set FinalQuestionEchoClients = New EchoClientCollection
+	FinalQuestion.Duration = CLng("-1")
+	FinalQuestion.TimingMode = ebTimingModeEvent
+	FinalQuestion.PreRelease = Val("0")
+
+	FinalQuestion.OnsetSync = 1
+	FinalQuestion.OffsetSync = 0
+
+	Set FinalQuestion_State = New SlideState
+	FinalQuestion_State.Name = "Default"
+
+	InitSlideStateDefaults FinalQuestion_State
+
+	FinalQuestion_State.BackColor = CColor("black")
+
+	FinalQuestion.States.Add FinalQuestion_State, "Default"
+
+
+	Set FinalQuestion_SlideText = New SlideText
+	FinalQuestion_SlideText.Name = "Text1"
+
+	InitSlideTextDefaults FinalQuestion_SlideText
+
+	FinalQuestion_SlideText.Text = "Indíquele al investigador quién es actor pasivo y quién el actor activo de la acción que viste\n\n(luego presione cualquier tecla)"
+	FinalQuestion_SlideText.X = "50%"
+	FinalQuestion_SlideText.Y = "87%"
+	FinalQuestion_SlideText.Width = "67%"
+	FinalQuestion_SlideText.Height = "20%"
+	FinalQuestion_SlideText.ForeColor = CColor("white")
+	FinalQuestion_SlideText.BackColor = CColor("black")
+	FinalQuestion.States.Item("Default").Objects.Add FinalQuestion_SlideText, "Text1"
+
+	Set FinalQuestion_SlideImage = New SlideImage
+	FinalQuestion_SlideImage.Name = "Image1"
+
+	InitSlideImageDefaults FinalQuestion_SlideImage
+
+	FinalQuestion_SlideImage.Y = "40%"
+	FinalQuestion_SlideImage.Width = "100%"
+	FinalQuestion_SlideImage.Height = "100%"
+	FinalQuestion_SlideImage.BackColor = CColor("black")
+	FinalQuestion.States.Item("Default").Objects.Add FinalQuestion_SlideImage, "Image1"
+	FinalQuestion.ActiveState = "Default"
+
+	Set Intro5 = New TextDisplay
+	Intro5.Name = "Intro5"
+	Intro5.Tag = ""
+
+	Set Intro5EchoClients = New EchoClientCollection
+
+	InitTextDisplayDefaults Intro5
+
+	Intro5.Text = "¿Ha comprendido?, si tiene alguna duda, antes de comenzar  pregúntele al investigador\n\n\n¡Ahora comenzaremos!\n\n(presione cualquier tecla para come" &_ 
+				"nzar)"
+	Intro5.BackColor = CColor("black")
+	Intro5.ForeColor = CColor("white")
+	Intro5.FontSize = "28"
+	Intro5.Duration = CLng("-1")
+	Intro5.TimingMode = ebTimingModeCumulative
+	Intro5.PreRelease = Val("100")
+
+	Intro5.OnsetSync = 1
+	Intro5.OffsetSync = 0
+
+	Set IntroPractice = New TextDisplay
+	IntroPractice.Name = "IntroPractice"
+	IntroPractice.Tag = ""
+
+	Set IntroPracticeEchoClients = New EchoClientCollection
+
+	InitTextDisplayDefaults IntroPractice
+
+	IntroPractice.Text = "A continuación le presentamos un ejemplo de la tarea para que practique\n\n(presione cualquier tecla para comenzar)"
+	IntroPractice.BackColor = CColor("black")
+	IntroPractice.ForeColor = CColor("white")
+	IntroPractice.FontSize = "28"
+	IntroPractice.Duration = CLng("-1")
+	IntroPractice.TimingMode = ebTimingModeCumulative
+	IntroPractice.PreRelease = Val("100")
+
+	IntroPractice.OnsetSync = 1
+	IntroPractice.OffsetSync = 0
+
+	Set Intro6 = New TextDisplay
+	Intro6.Name = "Intro6"
+	Intro6.Tag = ""
+
+	Set Intro6EchoClients = New EchoClientCollection
+
+	InitTextDisplayDefaults Intro6
+
+	Intro6.Text = "Después de cada imágen, presione la FLECHA HACIA ABAJO en el momento exacto en que entieda lo que pasó, no antes ni después.\n\n\n(presione cualquier " &_ 
+				"tecla para comenzar)"
+	Intro6.BackColor = CColor("black")
+	Intro6.ForeColor = CColor("white")
+	Intro6.FontSize = "28"
+	Intro6.Duration = CLng("-1")
+	Intro6.TimingMode = ebTimingModeCumulative
+	Intro6.PreRelease = Val("100")
+
+	Intro6.OnsetSync = 1
+	Intro6.OffsetSync = 0
+
+
+End Sub
+
+
+'--------------------------------------------------------------------------
+' InitPackages
+'
+'--------------------------------------------------------------------------
+Sub InitPackages(c As Context)
+
+End Sub
+
+
+
+'--------------------------------------------------------------------------
+' InitGlobals
+'
+'--------------------------------------------------------------------------
+Sub InitGlobals(c As Context)
+
+End Sub
+
+
+
+'--------------------------------------------------------------------------
+
+
+'--------------------------------------------------------------------------
+'--------------------------------------------------------------------------
+' UnInitGlobals
+'--------------------------------------------------------------------------
+Sub UnInitGlobals()
+End Sub
+'--------------------------------------------------------------------------
+' UnInitDevices
+'--------------------------------------------------------------------------
+Sub UnInitDevices()
+	Display.Close
+	Set Display = Nothing
+	Sound.Close
+
+	Keyboard.Close
+	Set Keyboard = Nothing
+
+	Mouse.Close
+	Set Mouse = Nothing
+
+
+	Set Serial = Nothing
+
+	Set Port2 = Nothing
+
+End Sub
+
+
+'--------------------------------------------------------------------------
+'--------------------------------------------------------------------------
+' UnInitPackages
+'--------------------------------------------------------------------------
+Sub UnInitPackages()
+End Sub
+
+
+'--------------------------------------------------------------------------
+' UnInitObjects
+'
+'--------------------------------------------------------------------------
+Sub UnInitObjects()
+
+	Set SessionProc = Nothing
+
+	Set TheEnd = Nothing
+
+	Set TheEndEchoClients = Nothing
+
+	Set BlkScrn = Nothing
+
+	Set Obj = Nothing
+
+	Set TrialProc = Nothing
+
+	Set BlockList = Nothing
+
+	Set BlockProc = Nothing
+
+	Set oldIntro3 = Nothing
+
+	Set oldIntro3EchoClients = Nothing
+
+	Set KeyboardResponse = Nothing
+
+	Set KeyboardResponseEchoClients = Nothing
+
+	Set oldScale = Nothing
+
+	Set Slide1 = Nothing
+
+	Set Slide2 = Nothing
+
+	Set Slide3 = Nothing
+
+	Set fixation = Nothing
+
+	Set confirmation = Nothing
+
+	Set confirmationEchoClients = Nothing
+
+	Set Intro1 = Nothing
+
+	Set Intro1EchoClients = Nothing
+
+	Set Intro4 = Nothing
+
+	Set Intro4EchoClients = Nothing
+
+	Set Scale = Nothing
+
+	Set Intro2 = Nothing
+
+	Set Intro2EchoClients = Nothing
+
+	Set Intro3 = Nothing
+
+	Set Slide4 = Nothing
+
+	Set Question1 = Nothing
+
+	Set Question1EchoClients = Nothing
+
+	Set Slide5 = Nothing
+
+	Set listforpers = Nothing
+
+	Set Scaleproc = Nothing
+
+	Set Slide6 = Nothing
+
+	Set Slide7 = Nothing
+
+	Set Slide8 = Nothing
+
+	Set Slide9 = Nothing
+
+	Set Pers = Nothing
+
+	Set Obj2 = Nothing
+
+	Set TrialProc2 = Nothing
+
+	Set listofrobj2 = Nothing
+
+	Set Combi = Nothing
+
+	Set Wait1 = Nothing
+
+	Set Wait1EchoClients = Nothing
+
+	Set Slide10 = Nothing
+
+	Set CombiPractice = Nothing
+
+	Set Question2 = Nothing
+
+	Set Question2EchoClients = Nothing
+
+	Set FinalQuestion = Nothing
+
+	Set FinalQuestionEchoClients = Nothing
+
+	Set Intro5 = Nothing
+
+	Set Intro5EchoClients = Nothing
+
+	Set IntroPractice = Nothing
+
+	Set IntroPracticeEchoClients = Nothing
+
+	Set Intro6 = Nothing
+
+	Set Intro6EchoClients = Nothing
+
+
+End Sub
+
+
+'--------------------------------------------------------------------------
+' Main
+'
+'--------------------------------------------------------------------------
+Sub Main()
+
+	' Create and initialize the default context, data file,
+	' and provide global access to the context.
+	Dim c As Context
+	Set c = New Context
+	Set c.DataFile = New DataFile
+	c.PushNewFrame
+	Set ebContext = c
+
+	' Set the log level names
+	c.SetLogLevelName 1, "Session"
+	c.SetLogLevelName 2, "Block"
+	c.SetLogLevelName 3, "Trial"
+	c.SetLogLevelName 4, "SubTrial"
+	c.SetLogLevelName 5, "LogLevel5"
+	c.SetLogLevelName 6, "LogLevel6"
+	c.SetLogLevelName 7, "LogLevel7"
+	c.SetLogLevelName 8, "LogLevel8"
+	c.SetLogLevelName 9, "LogLevel9"
+	c.SetLogLevelName 10, "LogLevel10"
+
+	' Set standard logging items
+	ebContext.SetAttrib "Experiment", "Postscan_ratings"
+	ebContext.SetAttrib "SessionDate", Date$
+	ebContext.SetAttrib "SessionTime", Time$
+	ebContext.SetAttrib "RandomSeed", PRNG.GetSeed()
+	' Set default for GroupNumber
+	c.SetAttrib "Group", "1"
+
+	'Initialize global variables for packages
+	InitGlobals c
+
+	CreateDefaultPort
+
+	If Basic.OS = ebWin32 Then
+		WinActivate "E-Run Experiment Window"
+	End If
+
+	' Get the StartupInfo
+
+	' Set the defaults for all of the StartupInfo
+	If Not c.AttribExists("Subject") Then c.SetAttrib "Subject", "1"
+	If Not c.AttribExists("Session") Then c.SetAttrib "Session", "1"
+
+	' Determine if StartupInfo.UseDefaults exists and is True/False to override prompts for StartupInfo parameters
+	Dim bStartupInfoUseDefaults As Boolean
+	bStartupInfoUseDefaults = False
+	If c.AttribExists("StartupInfo.UseDefaults") Then bStartupInfoUseDefaults = CLogical(c.GetAttrib("StartupInfo.UseDefaults"))
+	If Not bStartupInfoUseDefaults Then
+
+		Dim vAnswer As Variant
+StartupInfo_Begin:
+
+StartupInfoPrompt_Subject:
+		vAnswer = AskBox("Please enter the Subject Number (1-32767):", c.GetAttrib("Subject"))
+		If Not IsEmpty(vAnswer) then
+			If Not IsNumeric(vAnswer) then
+				MsgBox "Please enter an integer value"
+				GoTo StartupInfoPrompt_Subject
+			ElseIf CLng(vAnswer) < 0 Then
+				MsgBox "The value for Subject must not be less than 0"
+				GoTo StartupInfoPrompt_Subject
+			ElseIf CLng(vAnswer) > 32767 Then
+				MsgBox "The value for Subject must be not be greater than 32767"
+				GoTo StartupInfoPrompt_Subject
+			End If
+		Else
+			GoTo ExperimentAbort
+		End if
+
+		c.SetAttrib "Subject", CStr(vAnswer)
+
+StartupInfoPrompt_Session:
+		vAnswer = AskBox("Please enter the Session Number (0-32767):", c.GetAttrib("Session"))
+		If Not IsEmpty(vAnswer) then
+			If Not IsNumeric(vAnswer) then
+				MsgBox "Please enter an integer value"
+				GoTo StartupInfoPrompt_Session
+			ElseIf CLng(vAnswer) < 0 Then
+				MsgBox "The value for Session must not be less than 0"
+				GoTo StartupInfoPrompt_Session
+			ElseIf CLng(vAnswer) > 32767 Then
+				MsgBox "The value for Session must be not be greater than 32767"
+				GoTo StartupInfoPrompt_Session
+			End If
+		Else
+			GoTo ExperimentAbort
+		End if
+
+		c.SetAttrib "Session", CStr(vAnswer)
+
+		' Display the summary
+		Dim strSummary As String
+		strSummary = "Subject:    " & c.GetAttrib("Subject") & "\n"
+		strSummary = strSummary & "Session:    " & c.GetAttrib("Session") & "\n"
+		strSummary = strSummary & "\nContinue with the above startup info?"
+
+		Dim nSummaryAnswer As Integer
+		nSummaryAnswer = MsgBox(strSummary, ebYesNoCancel + ebQuestion, "Summary of Startup Info")
+		If nSummaryAnswer = ebNo Then
+				GoTo StartupInfo_Begin
+		ElseIf nSummaryAnswer = ebCancel Then
+				GoTo ExperimentAbort
+		End If
+
+	End If
+
+
+	'If the attribute Clock.Scale.Override exists
+	'  then use it for to set the Clock.Scale value
+	If c.AttribExists("Clock.Scale.Override") Then
+		Clock.Scale = CDbl(c.GetAttrib("Clock.Scale.Override"))
+	End If
+
+	' Set the Filenames for the data files
+	Dim strFilenameRecovery As String
+	Dim strFilenameEDAT As String
+
+	'If the attribute DataFile.Filename.Override exists
+	'  then use it for the .txt and .edat filenames
+	If c.AttribExists("DataFile.Filename.Override") Then
+
+		' Set the default Data Filename
+		strFilenameRecovery = CStr(c.GetAttrib("DataFile.Filename.Override")) & ".txt"
+		strFilenameEDAT = CStr(c.GetAttrib("DataFile.Filename.Override")) & ".edat"
+
+	Else
+
+		' Set the default Data Filename
+		strFilenameRecovery = CStr(c.GetAttrib("Experiment")) & "-" & CStr(c.GetAttrib("Subject")) & "-" & CStr(c.GetAttrib("Session")) & ".txt"
+		strFilenameEDAT = CStr(c.GetAttrib("Experiment")) & "-" & CStr(c.GetAttrib("Subject")) & "-" & CStr(c.GetAttrib("Session")) & ".edat"
+
+	End If
+
+	'Set the name of the data file
+	c.DataFile.Filename = strFilenameRecovery
+
+	' If we are logging data, then prompt to overwrite the data file if it exists
+	If CLng(c.GetAttrib("Subject")) <> 0 Then
+		If FileExists(c.DataFile.Filename) Or FileExists(strFilenameEDAT) Then
+			If ebYes <> MsgBox("WARNING: The data file and/or recovery file already exists:\nFILE: " & c.DataFile.Filename & "\n\nDo you want to overwrite?", ebYesNo + ebQuestion) Then
+				GoTo ExperimentAbort
+			End If
+		End If
+	End If
+
+	' Initialize all system devices, packages, and objects
+	InitDevices c
+	InitPackages c
+	InitObjects c
+
+	' If we are logging data, then open the datafile
+	If CLng(c.GetAttrib("Subject")) <> 0 Then
+		c.DataFile.Open
+		c.LogHeader
+	End If
+
+
+
+#If RUNTIME_VERSION_MAJOR > 1  Or (RUNTIME_VERSION_MAJOR = 1 And RUNTIME_VERSION_MINOR >= 2) Then
+	' Log clock timing information
+	c.SetAttrib "Clock.Information", Clock.Information
+#End If
+
+	' Start the running of the Experiment
+	SessionProc.Run c
+
+	' Clean up the context and close the datafile
+	If CLng(c.GetAttrib("Subject")) <> 0 Then
+		c.DataFile.Close
+		' Attempt to convert the recovery file into a data file
+		Dim nConvert As Long
+		nConvert = c.DataFile.Convert(ebProgressSimple)
+		If nConvert = 0 Then
+			' Settings in E-Studio are set to not remove E-Recovery file
+		Else
+			' The datafile failed to convert!
+			MsgBox "ERROR: The datafile did not convert!\nFILE: " & c.DataFile.Filename & "\n\nIt is recommended that you recover your data with the E-Recovery utility"
+			MsgBox c.DataFile.GetLastErrorMessage()
+		End If
+	End If
+ExperimentFinish:
+
+	UnInitObjects
+
+	UnInitPackages
+	UnInitDevices
+
+	UnInitGlobals
+
+ExperimentAbort:
+
+	' Clean up the context
+	c.PopFrame
+	Set c = Nothing
+	Set ebContext = Nothing
+
+	DestroyDefaultPort
+
+End Sub
+
+
+[DataSection_Obj(1)]
+Weight	Nested	Procedure	FirstPic	SecondPic	ThirdPic
+1		TrialProc2	o_i1_kickcar_frame001.bmp	o_i1_kickcar_frame002.bmp	o_i1_kickcar_frame003.bmp
+1		TrialProc2	o_i1_mayo_frame001.bmp	o_i1_mayo_frame002.bmp	o_i1_mayo_frame003.bmp
+1		TrialProc2	o_i1_posterhammer_frame001.bmp	o_i1_posterhammer_frame002.bmp	o_i1_posterhammer_frame003.bmp
+1		TrialProc2	o_i1_suitcase_frame001.bmp	o_i1_suitcase_frame002.bmp	o_i1_suitcase_frame003.bmp
+1		TrialProc2	o_i2_chess_frame001.bmp	o_i2_chess_frame002.bmp	o_i2_chess_frame003.bmp
+1		TrialProc2	o_u1_breakcup_frame001.bmp	o_u1_breakcup_frame002.bmp	o_u1_breakcup_frame003.bmp
+1		TrialProc2	o_u1_candle_frame001.bmp	o_u1_candle_frame002.bmp	o_u1_candle_frame003.bmp
+1		TrialProc2	o_u1_coffee_frame001.bmp	o_u1_coffee_frame002.bmp	o_u1_coffee_frame003.bmp
+1		TrialProc2	o_u1_water_frame001.bmp	o_u1_water_frame002.bmp	o_u1_water_frame003.bmp
+1		TrialProc2	o_u1_hitdoor_frame001.bmp	o_u1_hitdoor_frame002.bmp	o_u1_hitdoor_frame003.bmp\0
+
+[DataSection_BlockList(1)]
+Weight	Nested	Procedure	BlockNum	message
+1		BlockProc	BlockNum6	excellent work! \0
+
+[DataSection_listforpers(1)]
+Weight	Nested	Procedure	Scale	firstscale	secondscale	question
+1		Scaleproc	\[Scale\]	nada triste	muy triste	¿Qué tan triste se siente por la persona lastimada?
+1		Scaleproc	\[Scale\]	ninguna molestia	mucha molestia	¿Qué tanta molestia siente por lo que pasó?
+1		Scaleproc	\[Scale\]	nada de mala	muy mala	¿Qué tan mala es la persona que hizo la acción?
+1		Scaleproc	\[Scale\]	nada feliz	muy feliz	¿Qué tan feliz se siente la persona que hizo la acción?
+1		Scaleproc	\[Scale\]	nada incorrecta	muy incorrecta	¿Qué tan incorrecta fue la acción?
+1		Scaleproc	\[Scale\]	ningún castigo	mucho castigo	¿Cuánto castigo le daría a la persona que hizo la acción?\0
+
+[DataSection_Pers(1)]
+Weight	Nested	Procedure	FirstPic	SecondPic	ThirdPic
+1		TrialProc	p_i2_pencilstab_frame001.bmp	p_i2_pencilstab_frame002.bmp	p_i2_pencilstab_frame003.bmp
+1		TrialProc	p_i2_piano_frame001.bmp	p_i2_piano_frame002.bmp	p_i2_piano_frame003.bmp
+1		TrialProc	p_i2_umbrella_frame001.bmp	p_i2_umbrella_frame002.bmp	p_i2_umbrella_frame003.bmp
+1		TrialProc	p_i2_broom_frame001.bmp	p_i2_broom_frame002.bmp	p_i2_broom_frame003.bmp
+1		TrialProc	p_i2_push_frame001.bmp	p_i2_push_frame002.bmp	p_i2_push_frame003.bmp
+1		TrialProc	p_u1_doorhit_frame001.bmp	p_u1_doorhit_frame002.bmp	p_u1_doorhit_frame003.bmp
+1		TrialProc	p_u2_backchair_frame001.bmp	p_u2_backchair_frame002.bmp	p_u2_backchair_frame003.bmp
+1		TrialProc	p_u2_golf_frame001.bmp	p_u2_golf_frame002.bmp	p_u2_golf_frame003.bmp
+1		TrialProc	p_u2_bowling_frame001.bmp	p_u2_bowling_frame002.bmp	p_u2_bowling_frame003.bmp
+1		TrialProc	p_u2_poolstick_frame001.bmp	p_u2_poolstick_frame002.bmp	p_u2_poolstick_frame003.bmp\0
+
+[DataSection_Obj2(1)]
+Weight	Nested	Procedure
+1		TrialProc2\0
+
+[DataSection_listofrobj2(1)]
+Weight	Nested	Procedure	Scale	firstscale	secondscale	question
+1		Scaleproc	\[Scale\]	not sad	very sad	How sad do you feel for the thing that was hurt?
+1		Scaleproc	\[Scale\]	not upset	very upset	How upset do you feel about what happened?
+1		Scaleproc	\[Scale\]	not mean	very mean	How mean is the person who did the action
+1		Scaleproc	\[Scale\]	not happy	very happy	How happy does thet person who did the action feel?
+1		Scaleproc	\[Scale\]	not wrong	very wrong	How wrong was the action?
+1		Scaleproc	\[Scale\]	not at all	 a lot	How much would you punish the person who did that?\0
+
+[DataSection_Combi(1)]
+Weight	Nested	Procedure	FirstPic	SecondPic	ThirdPic
+1		TrialProc	p_i2_baseballbat_frame001.bmp	p_i2_baseballbat_frame002.bmp	p_i2_baseballbat_frame003.bmp
+1		TrialProc	p_i2_hairpulling_frame001.bmp	p_i2_hairpulling_frame002.bmp	p_i2_hairpulling_frame003.bmp
+1		TrialProc	p_u2_doorleg_frame001.bmp	p_u2_doorleg_frame002.bmp	p_u2_doorleg_frame003.bmp
+1		TrialProc	p_i2_pushlockers_frame001.bmp	p_i2_pushlockers_frame002.bmp	p_i2_pushlockers_frame003.bmp
+1		TrialProc	action_flower_frame001_R.bmp	action_flower_frame002_R.bmp	action_flower_frame003_R.bmp
+1		TrialProc	p_i2_trip_frame001.bmp	p_i2_trip_frame002.bmp	p_i2_trip_frame003.bmp
+1		TrialProc	p_u2_tennis_frame001.bmp	p_u2_tennis_frame002.bmp	p_u2_tennis_frame003.bmp
+1		TrialProc	p_u2_bowling_frame001.bmp	p_u2_bowling_frame002.bmp	p_u2_bowling_frame003.bmp
+1		TrialProc	p_i2_benchshove_frame001_R.bmp	p_i2_benchshove_frame002_R.bmp	p_i2_benchshove_frame003_R.bmp
+1		TrialProc	p_u2_soccer_frame001.bmp	p_u2_soccer_frame002.bmp	p_u2_soccer_frame003.bmp
+1		TrialProc	p_u2_bump_frame001.bmp	p_u2_bump_frame002.bmp	p_u2_bump_frame003.bmp
+1		TrialProc	p_i2_scissors_001.bmp	p_i2_scissors_002.bmp	p_i2_scissors_003.bmp
+1		TrialProc	p_u2_chairbump_frame001.bmp	p_u2_chairbump_frame002.bmp	p_u2_chairbump_frame003.bmp
+1		TrialProc	p_u2_bikefoot_frame001.bmp	p_u2_bikefoot_frame002.bmp	p_u2_bikefoot_frame003.bmp
+1		TrialProc	action_dumpster_frame001_R.bmp	action_dumpster_frame002_R.bmp	action_dumpster_frame003_R.bmp
+1		TrialProc	p_i2_choke_frame001.bmp	p_i2_choke_frame002.bmp	p_i2_choke_frame003.bmp
+1		TrialProc	p_u2_fingerdrawer_frame001.bmp	p_u2_fingerdrawer_frame002.bmp	p_u2_fingerdrawer_frame003.bmp
+1		TrialProc	p_u2_garbagebump_frame001.bmp	p_u2_garbagebump_frame002.bmp	p_u2_garbagebump_frame003.bmp
+1		TrialProc	p_i2_knifestab_frame001.bmp	p_i2_knifestab_frame002.bmp	p_i2_knifestab_frame003.bmp
+1		TrialProc	p_u2_golf_frame001.bmp	p_u2_golf_frame002.bmp	p_u2_golf_frame003.bmp
+1		TrialProc	p_u2_poolstick_frame001_R.bmp	p_u2_poolstick_frame002_R.bmp	p_u2_poolstick_frame003_R.bmp
+1		TrialProc	action_notebook2_frame001.bmp	action_notebook2_frame002.bmp	action_notebook2_frame003.bmp
+1		TrialProc	p_i2_batbycar_frame001.bmp	p_i2_batbycar_frame002.bmp	p_i2_batbycar_frame003.bmp
+1		TrialProc	p_i2_cane_frame001.bmp	p_i2_cane_frame002.bmp	p_i2_cane_frame003.bmp\0
+
+[DataSection_CombiPractice(1)]
+Weight	Nested	Procedure	FirstPic	SecondPic	ThirdPic
+1		TrialProc	p_i2_umbrella_frame001.bmp	p_i2_umbrella_frame002.bmp	p_i2_umbrella_frame003.bmp\0

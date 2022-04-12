@@ -1,0 +1,7 @@
+¿Dónde olvidó la cartera?\n
+\n
+En el pasto \n
+En el mar \n
+En la mesa \n
+En la silla \n
+No recuerdo \n

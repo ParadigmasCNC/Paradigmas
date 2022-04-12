@@ -1,0 +1,187 @@
+% Inicio de la tarea
+% Texto de percepcion introductorio
+% Texto de agradecimiento al sujeto
+Text_Perc = DrawFormattedText(window1, Textos_Percepcion{1,1}, 'center','center');
+Screen('TextSize',window1,(ceil(Pix_SS(1,3)/50)))
+Screen('Flip',window1, Text_Perc)
+pause(1)
+SpaceToContinue(window1)
+
+% Muestro como van a ser los trials (explico el exp)
+ImgTrial_Exp = imread([Path_Perception_Stimuli '/' Perception_Trial_Explanation]);
+imageDisplay = Screen('MakeTexture', window1, ImgTrial_Exp);
+Screen('FillRect', window1,backgroundColor)
+Screen('DrawTexture', window1, imageDisplay, [], [],[],0)
+Screen('Flip',window1)
+pause(1)
+SpaceToContinue(window1)
+
+% Explicacion de como dar respuestas
+Text_Perc2 = DrawFormattedText(window1, Textos_Percepcion{1,2}, 'center','center');
+Screen('TextSize',window1 , (ceil(Pix_SS(1,3)/50)))
+Screen('Flip',window1, Text_Perc2)
+pause(1)
+SpaceToContinue(window1)
+
+%%%%%%% Inicio Bloque Percepcion %%%%%%%
+for PerceptionIterations = 1:length(Stimuli_Perception_Database(1,3:end))
+    if AmountOfStimuli == '2'
+        if length(unique(Stimuli_Perception_Database(:,PerceptionIterations+2))) == 4
+            Correct_Response = 1;
+        else
+            Correct_Response = 0;
+        end
+    elseif AmountOfStimuli == '3'
+        if length(unique(Stimuli_Perception_Database(:,PerceptionIterations+2))) == 5
+            Correct_Response = 1;
+        else
+            Correct_Response = 0;
+        end
+    elseif AmountOfStimuli == '4'
+        if length(unique(Stimuli_Perception_Database(:,PerceptionIterations+2))) == 6
+            Correct_Response = 1;
+        else
+            Correct_Response = 0;
+        end
+    end
+    Image_Dummy = Image_Dummy1;
+    % Pantalla 1 segundo blanco
+    Screen('Flip',window1)
+    pause(1)
+    % Cruz de fijacion
+    fixationDuration = 0.5;
+    FixationCross_Img = imread([Path_Perception_Stimuli '/' FixationCross]);
+    FixationCross_Img = imresize(FixationCross_Img,[30,30]);
+    FixDisplay = Screen('MakeTexture', window1, FixationCross_Img);
+    Screen('FillRect', window1, backgroundColor)
+    Screen('DrawTexture', window1, FixDisplay,[],[],[],0)
+    Screen('Flip',window1,Screen('Flip',window1) + fixationDuration - Slack - ifi,0)
+    Screen('Flip',window1)
+    pause(0.250)
+    
+    for Imagen_Reproducir = 1:length(Stimuli_Perception_Database(:,1))-1
+        AssignedCell = Stimuli_Perception_Database(Imagen_Reproducir+1,PerceptionIterations+2);
+        WidthCell = Stimuli_Perception_Database{Imagen_Reproducir+1,PerceptionIterations-(PerceptionIterations-1)};
+        HeightCell = ceil(Stimuli_Perception_Database{Imagen_Reproducir+1,PerceptionIterations+1 -(PerceptionIterations-1)});
+        if isequal(char(AssignedCell),'img000.bmp') ~= 1
+            Img = imread([Path_Perception_Stimuli '/', char(Stimuli_Perception_Database(Imagen_Reproducir+1,PerceptionIterations+2))]);
+            Img = imresize(Img,[Screen_Width_Size, Screen_Height_Size]);
+            Image_Dummy(WidthCell -8: WidthCell + Screen_Width_Size - 9, HeightCell:HeightCell + Screen_Height_Size-1,:) = Img(:,:,:);
+        end
+    end
+    Barra  = imread([Path_Black_Bar, 'Barra_Negra/Barra.PNG']);
+    Barra = imresize(Barra,[2,(max(Min_Bar(:,2)) + 200 - min(Min_Bar(:,2)))]);
+    Image_Dummy(Midpoint_Bar_Place:Midpoint_Bar_Place+1, min(Min_Bar(:,2))-80 : max(Min_Bar(:,2))+ 119  ,:) = Barra(:,:,:);
+    ImgDisplay = Screen('MakeTexture', window1, Image_Dummy);
+    %     Screen('FillRect', window1,backgroundColor)
+    Screen('DrawTexture', window1, ImgDisplay,[],[],[],0)
+    %     Screen('Flip',window1,Screen('Flip',window1) + 10 - Slack,0)
+    Screen('Flip',window1)
+    [Answers_Perception] = Left_or_Right_ToContinue(window1,PerceptionIterations, Answers_Perception, Correct_Response, Slack);
+end
+%%%%%%% Final Bloque Percepcion %%%%%%%
+
+% Estructura con field de respuestas percepcion
+Subject_Answers.Perception = Answers_Perception;
+
+% Defino los textos a utilizar (se definen aca porque requieren de las
+% respuestas del Sujeto
+% Texto de puntuacion y tiempo de duracion de tarea
+Texto_Final_Percepcion = {['Resultados del test perceptivo:',...
+    sprintf('\n'),...
+    sprintf('\n'),...
+    sprintf('\n'),...
+    sprintf('\n'),...
+    sprintf('\n'),...
+    sprintf('\n'),...
+    'Su tiempo de reaccion fue de: ' , num2str(sum([Answers_Perception{2:end,4}])),...
+    sprintf('\n'),...
+    sprintf('\n'),...
+    sprintf('\n'),...
+    'Aciertos: ' , num2str(sum([Answers_Perception{2:end,5}])),'/10',...
+    sprintf('\n'),...
+    sprintf('\n'),...
+    sprintf('\n'),...
+    sprintf('\n'),...
+    sprintf('\n'),...
+    sprintf('\n'),...
+    'Presione Espacio para continuar']};
+
+% Texto de continuar con tarea de memoria
+Texto_Continuar_Memoria = {['Quiere continuar con la tarea de memoria?',...
+    sprintf('\n'),...
+    sprintf('\n'),...
+    sprintf('\n'),...
+    sprintf('\n'),...
+    sprintf('\n'),...
+    sprintf('\n'),...
+    'Presione DERECHA para continuar o IZQUIERDA para salir']};
+
+% Pantalla de respuestas
+Perception_Results = DrawFormattedText(window1,Texto_Final_Percepcion{1,1}, 'center','center');
+Screen('TextSize',window1 , (ceil(Pix_SS(1,3)/50)))
+Screen('Flip',window1, Perception_Results)
+pause(1)
+SpaceToContinue(window1)
+
+% Seguimos a la tarea de memoria
+Continue_Memory_TaskShapesOnlyOnly = DrawFormattedText(window1,Texto_Continuar_Memoria{1,1}, 'center','center');
+Screen('TextSize',window1 , (ceil(Pix_SS(1,3)/50)))
+Screen('Flip',window1, Continue_Memory_TaskShapesOnlyOnly)
+pause(1)
+
+% Vemos si seguimos con la tarea o continuamos con memoria
+Continue_or_quit(window1)   
+
+function SpaceToContinue(window1)
+    while 1
+    [keyIsDown,secs,keyCode] = KbCheck;
+        if keyCode(KbName('space')) == 1
+            break
+        elseif keyCode(KbName('ESCAPE')) == 1
+        Screen(window1,'Close')
+        break
+        end
+    end
+end
+function [Answers_Perception] = Left_or_Right_ToContinue(window1,PerceptionIterations, Answers_Perception, Correct_Response, Slack)
+    onsetTime = GetSecs - Slack;
+    while 1
+    [keyIsDown,secs,keyCode] = KbCheck;
+        if keyCode(KbName('LeftArrow')) == 1
+        Answers_Perception{PerceptionIterations+1,2} = 1;
+        Answers_Perception{PerceptionIterations+1,3} = 0;
+        Answers_Perception{PerceptionIterations+1,4} = secs- onsetTime; 
+        if Correct_Response == 1
+        Answers_Perception{PerceptionIterations+1,5} = 0;
+        elseif Correct_Response == 0 
+        Answers_Perception{PerceptionIterations+1,5} = 1;
+        end
+            break
+        elseif keyCode(KbName('RightArrow'))== 1
+        Answers_Perception{PerceptionIterations+1,2} = 0;
+        Answers_Perception{PerceptionIterations+1,3} = 1;
+        Answers_Perception{PerceptionIterations+1,4} = secs- onsetTime;
+        if Correct_Response == 1
+        Answers_Perception{PerceptionIterations+1,5} = 1;
+        elseif Correct_Response == 0 
+        Answers_Perception{PerceptionIterations+1,5} = 0;
+        end
+            break
+        elseif keyCode(KbName('ESCAPE')) == 1
+        Screen(window1,'Close')
+        break
+        end
+    end
+end
+function Continue_or_quit(window1)
+while 1
+    [keyIsDown,secs,keyCode] = KbCheck;
+    if keyCode(KbName('LeftArrow')) == 1
+        Screen(window1,'Close')
+        break
+    elseif keyCode(KbName('RightArrow'))== 1
+        break
+    end
+end   
+end
