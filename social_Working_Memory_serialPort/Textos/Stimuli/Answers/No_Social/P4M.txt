@@ -1,7 +1,0 @@
-¿Cómo fue Luis a la cocina?\n
-\n
-(1) En bata \n
-(2) En ropa interior \n
-(3) En patines \n
-(4) En pijama \n
-(5) No recuerdo \n

@@ -1,0 +1,10 @@
+[Object0]
+Name=TextDisplay1
+WindowState=0
+Left=104
+Top=104
+Width=724
+Height=323
+[Object1]
+Name=Introduction
+WindowState=2

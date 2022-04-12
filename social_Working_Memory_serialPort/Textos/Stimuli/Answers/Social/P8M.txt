@@ -1,8 +1,0 @@
-¿De quién esperaba respuesta Alberto\n
- una vez en el taxi?\n
-\n
-(1) De su mejor amigo \n
-(2) Del chofer \n
-(3) Del policía \n
-(4) De su vecino \n
-(5) No recuerdo \n

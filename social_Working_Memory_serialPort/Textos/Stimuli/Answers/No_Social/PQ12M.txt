@@ -1,8 +1,0 @@
-¿Dónde escuchó música Luis?\n 
-\n 
-
-(1) En la radio \n 
-(2) En la calle \n 
-(3) En el tocadiscos \n 
-(4) En el cenicero \n 
-(5) No recuerdo \n 

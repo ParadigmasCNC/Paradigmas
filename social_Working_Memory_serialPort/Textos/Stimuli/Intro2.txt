@@ -1,7 +1,0 @@
-En caso de NO HABER entendido la tarea \n 
-CONSULTE con el investigador AHORA \n
-En caso de HABER entendido la tarea \n 
-continue con las indicaciones \n
-\n
-
-Aprete ESPACIO para continuar

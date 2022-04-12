@@ -1,7 +1,0 @@
-¿Cómo le pidió el favor Alberto a Juan?\n
-\n
-(1) Confianzudamente \n
-(2) Brutalmente \n
-(3) Encarecidamente \n
-(4) Agresivamente \n
-(5) No recuerdo \n

@@ -1,7 +1,0 @@
-¿Dónde estaba el nombre de la discoteca?\n
-\n
-(1) En el boleto \n
-(2) En el cielo \n
-(3) En la pared \n
-(4) En un cartel \n
-(5) No recuerdo \n

@@ -1,9 +1,0 @@
-¿En qué momento Luis planificaba \n 
-qué hacer a lo largo de su día?\n
-\n
-
-(1) Durante el desayuno \n
-(2) Al mediodía \n
-(3) A la tarde \n
-(4) Mientras dormía \n
-(5) No recuerdo \n
